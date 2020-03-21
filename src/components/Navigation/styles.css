@@ -1,0 +1,42 @@
+.navbar {
+  background-color: azure;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  margin: 0 70px;
+  justify-content: space-between;
+}
+
+.logo {
+  margin-left: 30px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.navbar-right-content {
+  display: flex;
+  margin-left: auto;
+}
+
+.navbar-right-item {
+  padding: 0 30px;
+  line-height: 1.5em;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  font-size: 18px;
+  line-height: 1.8;
+}
