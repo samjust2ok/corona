@@ -14,7 +14,7 @@ export default class Header extends Component {
           <nav className='navbar-right'>
             <ul className='navbar-right-content'>
               <li className='navbar-right-item'>
-                <Link to={ROUTES.DASHBOARD}>Dashboard</Link>
+                <Link to={ROUTES.HOME}>Dashboard</Link>
               </li>
               <li className='navbar-right-item'>
                 <Link to={ROUTES.TIPS}>Tips</Link>
@@ -22,6 +22,7 @@ export default class Header extends Component {
               <li className='navbar-right-item'>
                 <Link to={ROUTES.REPORT}>Report</Link>
               </li>
+              <p className='navbar-right-icon'>Hamburger</p>
             </ul>
           </nav>
         </header>
