@@ -13,13 +13,15 @@ import Signup from './pages/Signup';
 
 const App = () => (
   <Router>
-    <div className='container'>
+    <div>
       <Header />
-      <Route exact path={ROUTES.HOME} component={Main} />
-      <Route path={ROUTES.TIPS} component={Tips} />
-      <Route path={ROUTES.REPORT} component={Report} />
-      <Route path={ROUTES.LOGIN} component={Login} />
-      <Route path={ROUTES.SIGNUP} component={Signup} />
+      <div className='container'>
+        <Route exact path={ROUTES.HOME} component={Main} />
+        <Route path={ROUTES.TIPS} component={Tips} />
+        <Route path={ROUTES.REPORT} component={Report} />
+        <Route path={ROUTES.LOGIN} component={Login} />
+        <Route path={ROUTES.SIGNUP} component={Signup} />
+      </div>
       <Footer />
     </div>
   </Router>
