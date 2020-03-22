@@ -35,27 +35,18 @@
 .navbar-right-content {
   display: flex;
   margin-left: auto;
-}
-
-.navbar-right-item:hover {
-  background-position: left bottom;
-}
-
-.navbar-right-item {
-  background: linear-gradient(to right, white 50%, black 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
-  transition: all 0.5s ease-out;
+  text-decoration: none;
 }
 
 .navbar-right-item a {
   color: white;
   line-height: 1.5em;
   padding: 16px;
-  transition: all 0.6s ease-out;
+  text-decoration: none;
 }
 .navbar-right-item a:hover {
-  color: black;
+  text-decoration: none;
+  background-color: purple;
 }
 
 .navbar-right-icon {
