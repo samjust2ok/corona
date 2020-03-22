@@ -58,12 +58,6 @@ button {
   place-items: center;
 }
 
-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 @media (max-width: 700px) {
   .main {
     padding: 0 16px;
