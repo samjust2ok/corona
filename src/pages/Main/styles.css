@@ -1,17 +1,32 @@
 .main {
-  height: calc(100vh-70);
-  padding: 0 70px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  background-color: black;
+  height: auto;
+  margin: auto;
+  width: 100%;
 }
 
 .welcome-text {
   font-size: 26px;
   font-weight: 500;
   color: white;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.bg-color {
+  background-color: black;
+  display: flex;
+  align-self: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.center-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .city-search {
@@ -21,7 +36,6 @@
   border-radius: 40px;
   height: 60px;
   display: flex;
-  align-self: center;
   align-items: center;
   justify-content: space-between;
   padding: 0 15px 0 30px;
@@ -53,13 +67,13 @@ button {
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  margin: 64px 16px 0px;
+  margin: 48px 16px 0px;
   height: auto;
   place-items: center;
 }
 
 @media (max-width: 700px) {
-  .main {
+  .max-width {
     padding: 0 16px;
   }
 

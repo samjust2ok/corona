@@ -1,13 +1,24 @@
+.navbar-container {
+  width: 100%;
+  background-color: black;
+  position: fixed;
+  z-index: 1;
+  margin: 0;
+  top: 0;
+  right: 0;
+}
+
 .navbar {
   background-color: black;
   height: 80px;
+  max-width: 1200px;
   display: flex;
   font-size: 18px;
   line-height: 1.5em;
   overflow: hidden;
   align-items: center;
   padding: 0 16px;
-  position: sticky;
+  margin: 0px auto;
   justify-content: space-between;
 }
 

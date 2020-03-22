@@ -6,7 +6,7 @@ import './styles.css';
 export default class Header extends Component {
   render() {
     return (
-      <div>
+      <div className='navbar-container'>
         <header className='navbar'>
           <a className='logo' aria-current='page' href='/'>
             COVID-19 Tracker
