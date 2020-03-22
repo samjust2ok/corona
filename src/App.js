@@ -17,6 +17,7 @@ const App = () => (
       <Header />
       <div className='container'>
         <Route exact path={ROUTES.HOME} component={Main} />
+        <Route path={ROUTES.DASHBOARD} component={Main} />
         <Route path={ROUTES.TIPS} component={Tips} />
         <Route path={ROUTES.REPORT} component={Report} />
         <Route path={ROUTES.LOGIN} component={Login} />
