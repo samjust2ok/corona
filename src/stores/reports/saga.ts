@@ -1,5 +1,5 @@
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
-import { HeroesActionTypes } from './types'
+import { ReportActionTypes } from './types'
 import { fetchError, fetchSuccess } from './actions'
 
 import callApi from '../../utils/callApi'
