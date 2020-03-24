@@ -1,0 +1,29 @@
+.login {
+    height: 440px;
+    width: 100%;
+    background: #fff;
+    display: flex;
+
+    .form {
+        margin: auto;
+        padding: 30px;
+        width: 400px;
+        
+        h1, p {
+            font-family: 'Roboto Sans', sans-serif;
+            line-height: 1.6;
+        }
+        h1 {
+            font-weight: 900;
+            font-size: 2.5rem;
+
+            @media screen and (max-width: 700px){
+                font-size: 2rem;
+            }
+        }
+        button {
+            width: 100%;
+            margin: auto;
+        }
+    }
+}

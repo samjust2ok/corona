@@ -16,7 +16,7 @@ import Signup from './pages/Signup';
 const App = () => (
   <AuthProvider>
   <Router>
-    <div>
+    <>
       <Header />
       <div className='container'>
         <Route exact path={ROUTES.HOME} component={Main} />
@@ -28,7 +28,7 @@ const App = () => (
         <Route path={ROUTES.HEADER} component={Header} />
       </div>
       <Footer />
-    </div>
+    </>
   </Router>
   </AuthProvider>
 );

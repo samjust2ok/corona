@@ -25,6 +25,9 @@ export default function Header() {
     color: '#fff',
     marginTop: '-9px',
   }
+  const NavColor = {
+    color: '#000'
+  }
     return (
       <div className='navbar-container'>
         <header className='navbar'>
@@ -40,8 +43,8 @@ export default function Header() {
         onClose={handleClose}
       >
         <MenuItem style={Navmenu} onClick={handleClose}>MENU</MenuItem>
-        <MenuItem onClick={handleClose}>Health Tips</MenuItem>
-        <MenuItem><Link to="/login">Login</Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link to="/tips" style={NavColor}> Health Tips </Link></MenuItem>
+        <MenuItem onClick={handleClose} ><Link to="/login" style={NavColor}>Login</Link></MenuItem>
         </Menu>
           </p>
           <Link className='logo' aria-current='page' to='/'>
