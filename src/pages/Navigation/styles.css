@@ -13,7 +13,7 @@
   height: 80px;
   max-width: 1200px;
   display: flex;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5em;
   overflow: hidden;
   align-items: center;
@@ -49,7 +49,7 @@
   margin-top: -2px;
   text-decoration: none;
 }
-.navbar-right-item a:hover {
+.navbar-right-item a:hover, a:focus-within, a:active {
   text-decoration: none;
   outline: rgb(175, 8, 86) dotted 2px;
   outline-offset: 5px;
@@ -76,6 +76,6 @@
   }
   .logo {
     color: white;
-    margin-right: 10px;
+    margin-right: 5px;
   }
 }

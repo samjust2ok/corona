@@ -5,13 +5,14 @@
 }
 
 .welcome-text {
-  font-size: 26px;
+  font-size: 2rem;
   font-weight: 500;
   color: white;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 24px;
   text-align: center;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .bg-color {
@@ -80,4 +81,7 @@ button {
   .city-search {
     width: 85%;
   }
+  .welcome-text {
+    font-size: 1.3rem;
+   }
 }

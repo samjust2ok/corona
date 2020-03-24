@@ -18,6 +18,13 @@ export default function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const Navmenu = {
+    background: '#f50057',
+    width: '100%',
+    height: '40px',
+    color: '#fff',
+    marginTop: '-9px',
+  }
     return (
       <div className='navbar-container'>
         <header className='navbar'>
@@ -32,9 +39,9 @@ export default function Header() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem style={Navmenu} onClick={handleClose}>MENU</MenuItem>
+        <MenuItem onClick={handleClose}>Health Tips</MenuItem>
+        <MenuItem><Link to="/login">Login</Link></MenuItem>
         </Menu>
           </p>
           <Link className='logo' aria-current='page' to='/'>
