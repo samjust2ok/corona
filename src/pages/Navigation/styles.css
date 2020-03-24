@@ -21,6 +21,9 @@
   margin: 0px auto;
   justify-content: space-between;
 }
+.navbar img {
+  width: 20px;
+}
 
 .logo {
   color: white;
@@ -41,12 +44,15 @@
 .navbar-right-item a {
   color: white;
   line-height: 1.5em;
-  padding: 16px;
+  /* padding: 16px; */
+  margin-left: 20px;
+  margin-top: -2px;
   text-decoration: none;
 }
 .navbar-right-item a:hover {
   text-decoration: none;
-  background-color: purple;
+  outline: rgb(175, 8, 86) dotted 2px;
+  outline-offset: 5px;
 }
 
 .navbar-right-icon {
@@ -61,5 +67,15 @@
 
   .navbar-right-icon {
     display: flex;
+  }
+  .navbar-right-icon button {
+    padding: 0 !important;
+    color: white;
+    min-width: 0px !important;
+    height: 0px !important; 
+  }
+  .logo {
+    color: white;
+    margin-right: 10px;
   }
 }

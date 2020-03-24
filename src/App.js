@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import * as ROUTES from '../src/constants/routes';
+import { AuthProvider } from '../src/auth/Auth'
 import './App.css';
 
 import Header from './pages/Navigation';
@@ -10,8 +11,10 @@ import Tips from './pages/Tips';
 import Report from './pages/Report';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+// import Header from './components/header/Header';
 
 const App = () => (
+  <AuthProvider>
   <Router>
     <div>
       <Header />
@@ -22,9 +25,11 @@ const App = () => (
         <Route path={ROUTES.REPORT} component={Report} />
         <Route path={ROUTES.LOGIN} component={Login} />
         <Route path={ROUTES.SIGNUP} component={Signup} />
+        <Route path={ROUTES.HEADER} component={Header} />
       </div>
       <Footer />
     </div>
   </Router>
+  </AuthProvider>
 );
 export default App;

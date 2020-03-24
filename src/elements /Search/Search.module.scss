@@ -1,0 +1,35 @@
+.searchForm {
+   .input {
+       position: relative;
+       display: inline-block;
+   }
+   input {
+    //    border: none;
+       border-radius: 5px;
+       padding: 5px 5px 5px 20px;
+       border: 1.5px solid #3EBD1D;
+       margin-right: 10px;
+
+       &:focus-within {
+           border: 1px solid #3EBD1D;
+           border-outline-color: red;
+       }
+    &[placeholder] {
+        font-size: 17px;
+        color: black;
+    }
+      
+   }
+    .searchIcon {
+           position: absolute;
+           right: 11px;
+           background: #3EBD1D;
+           color: #fff;
+           top: 1px;
+           padding: 4px;
+           cursor: pointer;
+           &:focus {
+               
+           }
+       }
+}
