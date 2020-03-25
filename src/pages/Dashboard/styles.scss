@@ -5,7 +5,10 @@
 }
 
 .welcome-text {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   font-weight: 500;
   color: white;
   margin-left: auto;
@@ -13,6 +16,13 @@
   margin-bottom: 24px;
   text-align: center;
   font-family: 'Roboto Mono', monospace;
+  img {
+    margin: auto;
+  }
+  button {
+    width: 20px;
+    height: 40px;
+  }
 }
 
 .bg-color {

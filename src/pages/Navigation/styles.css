@@ -1,6 +1,6 @@
 .navbar-container {
   width: 100%;
-  background-color: black;
+  background-color: #14191A;
   position: fixed;
   z-index: 1;
   margin: 0;
@@ -9,7 +9,7 @@
 }
 
 .navbar {
-  background-color: black;
+  background-color: #14191A;
   height: 80px;
   max-width: 1200px;
   display: flex;
