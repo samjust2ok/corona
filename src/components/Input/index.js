@@ -89,6 +89,23 @@ export function Gender(props)  {
   )
 }
 
+export function Option(props) {
+  return (
+    <FormControl component="fieldset">
+    <FormLabel component="legend">{props.text}</FormLabel>
+      <RadioGroup row aria-label="position" name="position" defaultValue="top">
+     <FormControlLabel
+          value={props.value}
+          control={<Radio color="secondary" />}
+          label={props.label}
+          labelPlacement="end"
+          required
+        />
+      </RadioGroup>
+    </FormControl>
+  )
+}
+
 export function Option2(props) {
   return (
     <FormControl component="fieldset">
