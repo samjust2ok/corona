@@ -7,6 +7,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import SearchIcon from '@material-ui/icons/Search'
 import { Option } from '../../components/Input'
 import './styles.scss';
 
@@ -79,7 +80,7 @@ const MenuStyle = {
        
         <form className='city-search'>
           <input className='city-search-input' placeholder='Try Ibadan' />
-          <button type='submit' />
+          <button type='submit'> <SearchIcon /> </button>
         </form>
       </div>
     </div>

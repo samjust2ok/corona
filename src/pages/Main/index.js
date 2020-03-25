@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../../components/Card';
 import Background from '../../images/covid-19-map.jpg'
+import SearchIcon from '@material-ui/icons/Search'
 import './styles.css';
 
 const bgImage = {
@@ -17,7 +18,7 @@ const Main = () => (
         </h2>
         <form className='city-search'>
           <input className='city-search-input' placeholder='Try Ibadan' />
-          <button type='submit' />
+          <button type='submit'> <SearchIcon /> </button>
         </form>
       </div>
     </div>
