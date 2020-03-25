@@ -18,5 +18,14 @@
                 width: 100%;
             }
         }
+        legend {
+            line-height: 1.6;
+        }
+        button {
+            width: 320px;
+            @media screen and (max-width: 500px) {
+                width: 100%;
+            }
+        }
     }
 }
