@@ -11,7 +11,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import Grid from '@material-ui/core/Grid';
-import DateFnsUtils from '@date-io/date-fns';
+import MomentUtils from '@date-io/moment';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -34,6 +34,9 @@ const useStyles = makeStyles(theme => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+  width: {
+    minWidth: '320'
+  }
 }));
 
 export default function Input(props) {
@@ -96,12 +99,14 @@ export function Option2(props) {
           control={<Radio color="secondary" />}
           label={props.label}
           labelPlacement="end"
+          required
         />
         <FormControlLabel 
           value={props.value_2}
           control={<Radio color="secondary" />}
           label={props.label_2}
           labelPlacement="end"
+          required
         />
       </RadioGroup>
     </FormControl>
@@ -118,18 +123,21 @@ export function Option3(props) {
           control={<Radio color="secondary" />}
           label={props.label}
           labelPlacement="end"
+          required
         />
         <FormControlLabel 
           value={props.value_2}
           control={<Radio color="secondary" />}
           label={props.label_2}
           labelPlacement="end"
+          required
         />
         <FormControlLabel 
           value={props.value_3}
           control={<Radio color="secondary" />}
           label={props.label_3}
           labelPlacement="end"
+          required
         />
       </RadioGroup>
     </FormControl>
@@ -137,10 +145,9 @@ export function Option3(props) {
 }
 
 export function DateTaker(props) {
- 
+  const classes = useStyles();
   return(
-     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <Grid container justify="space-around">
+     <MuiPickersUtilsProvider utils={MomentUtils}>
         <KeyboardDatePicker
           disableToolbar
           variant="inline"
@@ -150,11 +157,12 @@ export function DateTaker(props) {
           label={props.label}
           value={props.selectedDate}
           onChange={props.handleDateChange}
+          shrink={true}
+          required
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
         />
-      </Grid>
     </MuiPickersUtilsProvider>
   )
 }
