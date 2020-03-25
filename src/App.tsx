@@ -7,6 +7,7 @@ import './App.css';
 
 import Header from './pages/Navigation';
 import Main from './pages/Main';
+import Dashboard from './pages/Dashboard';
 import Footer from './pages/Footer';
 import Tips from './pages/Tips';
 import Report from './pages/Report';
@@ -36,7 +37,7 @@ const App = () => (
       <Header />
       <div className='container'>
         <Route exact path={ROUTES.HOME} component={Main} />
-        <Route path={ROUTES.DASHBOARD} component={Main} />
+        <Route path={ROUTES.DASHBOARD} component={Dashboard} />
         <Route path={ROUTES.TIPS} component={Tips} />
         <Route path={ROUTES.REPORT} component={Report} />
         <Route path={ROUTES.LOGIN} component={Login} />

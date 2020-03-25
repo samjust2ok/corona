@@ -10,7 +10,6 @@
             } 
         }
     form {
-        
         .e__bio__data {
             width: 50%;
 
@@ -26,6 +25,10 @@
             @media screen and (max-width: 500px) {
                 width: 100%;
             }
+        }
+        section {
+            margin-top: .5rem;
+            margin-bottom: .5rem;
         }
     }
 }
