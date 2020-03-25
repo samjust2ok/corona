@@ -14,6 +14,7 @@ import Report from './pages/Report';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
+
 const App = () => (
   <AuthProvider>
   <Router>
