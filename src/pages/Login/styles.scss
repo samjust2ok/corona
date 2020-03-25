@@ -1,5 +1,5 @@
 .login {
-    height: 440px;
+    position: relative;
     width: 100%;
     background: #fff;
     display: flex;
@@ -8,6 +8,9 @@
         margin: auto;
         padding: 30px;
         width: 400px;
+
+       
+        
         
         h1, p {
             font-family: 'Roboto Sans', sans-serif;

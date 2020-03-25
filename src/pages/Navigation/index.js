@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 import Button from '@material-ui/core/Button';
@@ -53,12 +53,12 @@ export default function Header() {
           <nav className='navbar-right'>
             <ul className='navbar-right-content'>
               <li className='navbar-right-item'>
-                <Link activeStyle={{ color: 'purple' }} to={ROUTES.DASHBOARD}>
+                <Link activestyle={{ color: 'purple' }} to={ROUTES.DASHBOARD}>
                   Dashboard
                 </Link>
               </li>
               <li className='navbar-right-item'>
-                <Link activeStyle={{ color: 'purple' }} to={ROUTES.TIPS}>
+                <Link activestyle={{ color: 'purple' }} to={ROUTES.TIPS}>
                   Tips
                 </Link>
               </li>

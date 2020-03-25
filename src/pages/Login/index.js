@@ -1,31 +1,27 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import Input from '../../components/Input'
+import Input from '../../components/Input';
 import Button from '@material-ui/core/Button';
 import app from "../../base";
-import * as firebase from "firebase/app";
-import "firebase/auth";
-import { AuthContext, useAuthContext } from "../../auth/Auth";
 import './styles.scss';
+
 
 export function Login({ history }){
   var [email, setEmail] = useState('');
-  var [phone, setPhone] = useState('');
-  const [btnClick, setBtnClick] = useState(false);
-  const [btnAuthClick, setBtnAuthClick] = useState(false);
-  const [error, setError] = useState(null);
+  var [pass, setPass] = useState('');
+
 
    const handleLogin = useCallback(
     async event => {
       event.preventDefault();
-      const { email, phone } = event.target.elements;
+      const { email, pass } = event.target.elements;
       try {
         const user = app.auth().currentUser;
         const email_verified = user.emailVerified;
         if (user !== null && email_verified) {
           await app
           .auth()
-          .signInWithEmailAndPassword(email.value, phone.value);
+          .signInWithEmailAndPassword(email.value, pass.value);
         history.push("/");
         } else {
           alert("Please verify your email first");
@@ -38,6 +34,7 @@ export function Login({ history }){
     [history]
   );
     return (
+      <div className="max-width">
       <div className="login">
         <div className="form">
         <h1> Welcome back. </h1>
@@ -52,21 +49,24 @@ export function Login({ history }){
         handleChange={e => setEmail(e.target.value)}
         />
         <Input 
-        type="text"
-        name="phone"
-        value={phone}
-        placeholder="+234 *** *** ***"
-        label="Phone"
-        handleChange={e => setPhone(e.target.value)}
+        type="password"
+        name="pass"
+        value={pass}
+        placeholder="*** *** *** ***"
+        label="Pass"
+        handleChange={e => setPass(e.target.value)}
         />
         <Button 
         variant="contained" 
         color="primary"
         type="submit"
-        > Sign in</Button>
+        > Sign in</Button> 
+        <br />
+        <br />
         <p> Don't have an account yet? <Link to="/signup"> Sign Up </Link> </p>
         </form>
         </div>
+      </div>
       </div>
     );
   
