@@ -13,6 +13,16 @@
   margin-bottom: 24px;
   text-align: center;
   font-family: 'Roboto Mono', monospace;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .welcome-text {
+    padding-top: 20px;
+  }
 }
 
 .bg-color {

@@ -6,6 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Logo from '../../icons/world.svg'
 import * as ROUTES from '../../constants/routes';
+import app from "../../base";
 import './styles.css';
 
 export default function Header() {

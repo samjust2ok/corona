@@ -22,7 +22,7 @@ export function Login({ history }){
           await app
           .auth()
           .signInWithEmailAndPassword(email.value, pass.value);
-        history.push("/");
+        history.push("/dashboard");
         } else {
           alert("Please verify your email first");
         }
