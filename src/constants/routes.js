@@ -4,3 +4,4 @@ export const SIGNUP = '/signup';
 export const TIPS = '/tips';
 export const REPORT = '/report';
 export const DASHBOARD = '/dashboard';
+export const HEADER = '/header';
