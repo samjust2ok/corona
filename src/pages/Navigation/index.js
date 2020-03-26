@@ -52,9 +52,14 @@ export default function Header() {
           </Link>
           <nav className='navbar-right'>
             <ul className='navbar-right-content'>
-              <li className='navbar-right-item'>
+              {/* <li className='navbar-right-item'>
                 <Link activestyle={{ color: 'purple' }} to={ROUTES.DASHBOARD}>
                   Dashboard
+                </Link>
+              </li> */}
+              <li className='navbar-right-item'>
+                <Link activestyle={{ color: 'purple' }} to={ROUTES.SIGNUP}>
+                  Sign up
                 </Link>
               </li>
               <li className='navbar-right-item'>
