@@ -1,5 +1,19 @@
 export interface Report{
-
+  city?: string;
+  age: string;
+  gender?: 'male' | 'female';
+  isFeverish?: boolean;
+  feverLevel?: 'high' | 'low' | 'intermittent';
+  isCoughing?: boolean;
+  coughType?: 'sputum' | 'dry';
+  runnyNose?: boolean;
+  soreThroat?: boolean;
+  hasHeartDisease?: boolean;
+  specialConditions?: 'diabetic' | 'hypertensive' | 'asthmatic' [];
+  cancerous?: boolean;
+  recentTravel?: boolean;
+  arrivalDate?: string | Date;
+  foreignContacts?: boolean;
 }
 
 export interface CityReport{
@@ -17,6 +31,20 @@ export interface ReportState{
   data: Report | null;
   error: string;
   loading: boolean;
+}
+
+export interface GetReportActionType{
+  type: ReportActionTypes.GET_REPORT_REQUEST,
+  payload: {
+    id: string;
+  }
+}
+
+export interface CreateReportActionType{
+  type: ReportActionTypes.GET_REPORTS_BY_CITY_REQUEST,
+  payload: {
+    report: Report;
+  }
 }
 
 export enum ReportActionTypes{
