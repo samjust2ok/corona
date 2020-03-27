@@ -19,11 +19,13 @@ const Main = () => {
     setSearchTerm(event.target.value);
   };
 
+
+
   React.useEffect(() => {
     const results = Cases.map((cases) => {
       return cases;
     }).filter(cases =>
-      cases.name.toLowerCase().includes(searchTerm)
+      cases.name.toLowerCase().includes(searchTerm.toLowerCase().trim())
     );
     setSearchResults(results);
   }, [searchTerm]);
