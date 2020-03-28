@@ -32,7 +32,7 @@ export default function Header() {
       <div className='navbar-container'>
         <header className='navbar'>
         <p className='navbar-right-icon' >
-        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} color="primary" variant="contained"> 
+        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} color="primary" variant="contained" style={{ marginTop: '-12px' }}> 
         <MenuIcon />
         </Button>
           <Menu
@@ -41,6 +41,7 @@ export default function Header() {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
+        
       >
         <MenuItem style={Navmenu} onClick={handleClose}>MENU</MenuItem>
         <MenuItem onClick={handleClose}><Link to="/tips" style={NavColor}> Health Tips </Link></MenuItem>
