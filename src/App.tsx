@@ -4,10 +4,9 @@ import * as firebaseInit from 'firebase';
 import * as ROUTES from '../src/constants/routes';
 import { AuthProvider } from '../src/auth/Auth'
 import './App.css';
-
 import Header from './pages/Navigation';
 import Main from './pages/Main';
-import Dashboard from './pages/Dashboard';
+// import Dashboard from './pages/Dashboard';
 import Footer from './pages/Footer';
 import Tips from './pages/Tips';
 import Report from './pages/Report';
@@ -34,6 +33,7 @@ const App = () => (
           <Footer />
         </>
       </Router>
+  </Router>
   </AuthProvider>
   </Provider>
 );
