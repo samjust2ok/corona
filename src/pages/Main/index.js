@@ -51,7 +51,6 @@ return(
     </div>
     <div className='max-width'>
       <section className='results'>
-     
         {
           searchResults.map(result => (
             <div>
