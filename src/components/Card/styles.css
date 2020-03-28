@@ -31,6 +31,7 @@
 
 .card-container ul li {
   font-family: 'Roboto Sans', sans-serif;
+  font-weight: 500;
 }
 
 .card-row {
@@ -39,6 +40,15 @@
   justify-content: space-between;
   padding: .2rem;
 }
-.card-row p:nth-child(2) {
+.card-row p.p {
+  color: tomato;
+}
+.card-row p.n {
+  color: hsl(44, 92%, 49%);
+}
+.card-row p.r {
+  color: green;
+}
+.card-row p.d {
   color: red;
 }
