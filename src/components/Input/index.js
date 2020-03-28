@@ -61,8 +61,9 @@ export function Gender(props)  {
   const classes = useStyles();
   const [gender, setGender] = React.useState('');
 
-  const handleChange = event => {
+  const change = event => {
     setGender(event.target.value);
+    props.handleChange(event.target.value)
   };
   return (
     <div className={classes.root}>
@@ -72,14 +73,14 @@ export function Gender(props)  {
           labelId="demo-simple-select-outlined-label"
           id="demo-simple-select-outlined"
           value={gender}
-          onChange={handleChange}
+          onChange={change}
           label={props.label}
         >
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
           <MenuItem value={props.value1}>{props.value1Text}</MenuItem>
-          <MenuItem value={props.value2}>{props.value1Text}</MenuItem>
+          <MenuItem value={props.value2}>{props.value2Text}</MenuItem>
         </Select>
       </FormControl>
       </div>
@@ -107,7 +108,7 @@ export function Option2(props) {
   return (
     <FormControl component="fieldset">
     <FormLabel component="legend">{props.text}</FormLabel>
-      <RadioGroup row aria-label="position" name="position" defaultValue="top">
+      <RadioGroup onChange = {props.handleChange} row aria-label="position" name="position" defaultValue="top">
      <FormControlLabel
           value={props.value}
           control={<Radio color="secondary" />}
@@ -131,7 +132,7 @@ export function Option3(props) {
   return (
     <FormControl component="fieldset">
     <FormLabel component="legend">{props.text}</FormLabel>
-      <RadioGroup row aria-label="position" name="position" defaultValue="top">
+      <RadioGroup onChange = {props.handleChange} row aria-label="position" name="position" defaultValue="top">
      <FormControlLabel
           value={props.value}
           control={<Radio color="secondary" />}

@@ -7,7 +7,7 @@ const initialState: ReportState = {
   loading: false
 }
 
-export const reportsReducer: Reducer<ReportState> = (state = initialState, action) => {
+export const reportReducer: Reducer<ReportState> = (state = initialState, action) => {
   switch (action.type) {
     case ReportActionTypes.GET_REPORT_REQUEST: {
       return { ...state, loading: true }

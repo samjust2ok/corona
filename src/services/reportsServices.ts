@@ -16,6 +16,7 @@ export const getReportRequest = async (id: string) => {
   }
 }
 
+
 export const getReportsRequest = async () => {
   let reports: Report[] = [];
   try {
@@ -50,7 +51,3 @@ export const createReportRequest = async (report: Report) => {
   }
 }
 
-
-export {
-  
-}

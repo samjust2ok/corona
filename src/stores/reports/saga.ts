@@ -25,6 +25,7 @@ function* fetchReports(){
 function* createReport(action: CreateReportActionType){
   const report: Report = action.payload.report;
   const res: { error: boolean, data?: string, message?: string } = yield call(createReportRequest, report);
+  console.log(res)
   if (res.error) {
     yield put(createNewReportByCityFailure(res.message as string))
   } else {
