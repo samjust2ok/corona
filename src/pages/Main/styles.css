@@ -2,6 +2,7 @@
   height: auto;
   margin: auto;
   width: 100%;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .welcome-text {
@@ -12,7 +13,6 @@
   margin-right: auto;
   margin-bottom: 24px;
   text-align: center;
-  font-family: 'Roboto Mono', monospace;
   min-height: 100px;
   display: flex;
   align-items: center;
@@ -72,6 +72,48 @@ button {
   cursor: pointer;
   transition: 0.3s linear;
   outline: none;
+}
+h3.heading__text {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.how__it__spread{
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+  width: 100%;
+  height: auto;
+}
+
+.how__it__spread section{
+  width: 300px;
+  margin: 10px;
+  height: auto;
+  padding: 10px;
+}
+.how__it__spread section h1{
+  font-family: 'Roboto Mono', monospace;
+  color: #234A65;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+.how__it__spread section p {
+  color: #999999;
+  line-height: 1.2;
+  text-align: justify;
+}
+
+.how__it__spread section img {
+  width: 60px;
+  margin-bottom: 30px;
+}
+a.next__link {
+  margin-right: auto;
+  padding: 15px;
+  display: flex;
+  justify-content: space-around;
+  width: 230px;
+
 }
 
 .results {

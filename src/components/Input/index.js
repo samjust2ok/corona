@@ -171,12 +171,26 @@ export function DateTaker(props) {
           label={props.label}
           value={props.selectedDate}
           onChange={props.handleDateChange}
-          shrink={true}
           required
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
         />
     </MuiPickersUtilsProvider>
+  )
+}
+
+export function MultiInput(props) {
+  return(
+    <TextField
+          id="outlined-multiline-static"
+          label={props.label}
+          multiline
+          rows="4"
+          variant="outlined"
+          InputLabelProps={{ shrink: true }} 
+          onChange={props.handleChange}
+          placeholder={props.placeholder}
+        />
   )
 }

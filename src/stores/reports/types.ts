@@ -14,6 +14,7 @@ export interface Report{
   recentTravel?: boolean;
   arrivalDate?: string | Date;
   foreignContacts?: boolean;
+  hasSymptoms ?: string; // Just added
 }
 
 export interface CityReport{

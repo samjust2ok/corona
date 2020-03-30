@@ -18,6 +18,14 @@ export const reportReducer: Reducer<ReportState> = (state = initialState, action
     case ReportActionTypes.GET_REPORTS_BY_CITY_REQUEST_FAILURE: {
       return { ...state, loading: false, error: action.payload }
     }
+    case ReportActionTypes.CREATE_REPORT_BY_CITY_REQUEST_SUCCESS:{
+      return { ...state, loading: false, createRequestSuccess:true}
+    }
+
+    case ReportActionTypes.CREATE_REPORT_BY_CITY_REQUEST_SUCCESS:{
+      return { ...state, loading: false, createRequestSuccess:true}
+    }
+    
     default: {
       return state
     }

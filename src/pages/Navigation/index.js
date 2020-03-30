@@ -5,10 +5,13 @@ import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Logo from '../../icons/world.svg'
+import app from '../../base';
+import { useAuthContext } from '../../auth/Auth';
 import * as ROUTES from '../../constants/routes';
 import './styles.css';
 
 export default function Header() {
+  const { currentUser } = useAuthContext();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = event => {
@@ -32,7 +35,7 @@ export default function Header() {
       <div className='navbar-container'>
         <header className='navbar'>
         <p className='navbar-right-icon' >
-        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} color="primary" variant="contained"> 
+        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} color="primary" variant="contained" style={{ marginTop: '-12px' }}> 
         <MenuIcon />
         </Button>
           <Menu
@@ -41,10 +44,16 @@ export default function Header() {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
+        
       >
         <MenuItem style={Navmenu} onClick={handleClose}>MENU</MenuItem>
         <MenuItem onClick={handleClose}><Link to="/tips" style={NavColor}> Health Tips </Link></MenuItem>
-        <MenuItem onClick={handleClose} ><Link to="/login" style={NavColor}>Login</Link></MenuItem>
+        {
+          currentUser ? 
+          <MenuItem onClick={ () => app.auth().signOut() } ><Link to="#" style={NavColor}>Logout</Link></MenuItem>
+          :
+          <MenuItem onClick={handleClose} ><Link to="/login" style={NavColor}>Login</Link></MenuItem>
+        }
         </Menu>
           </p>
           <Link className='logo' aria-current='page' to='/'>
@@ -52,10 +61,22 @@ export default function Header() {
           </Link>
           <nav className='navbar-right'>
             <ul className='navbar-right-content'>
-              <li className='navbar-right-item'>
+              {/* <li className='navbar-right-item'>
                 <Link activestyle={{ color: 'purple' }} to={ROUTES.DASHBOARD}>
                   Dashboard
                 </Link>
+              </li> */}
+              <li className='navbar-right-item'>
+                {
+                  currentUser ? 
+                  <Link activestyle={{ color: 'purple' }} onClick={ () => app.auth().signOut() }>
+                  Sign out
+                </Link> :
+                  <Link activestyle={{ color: 'purple' }} to={ROUTES.SIGNUP}>
+                  Sign up
+                </Link>
+                }
+                
               </li>
               <li className='navbar-right-item'>
                 <Link activestyle={{ color: 'purple' }} to={ROUTES.TIPS}>

@@ -1,14 +1,18 @@
 import React, { useState, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Input from '../../components/Input';
+import AlertDialog from '../../components/Dialog';
 import Button from '@material-ui/core/Button';
 import app from "../../base";
+import { useAuthContext } from '../../auth/Auth';
 import './styles.scss';
 
 
 export function Login({ history }){
+  const { currentUser } = useAuthContext()
   var [email, setEmail] = useState('');
   var [pass, setPass] = useState('');
+  var [passwordChange, setPasswordChange] = useState('');
 
 
    const handleLogin = useCallback(
@@ -16,16 +20,18 @@ export function Login({ history }){
       event.preventDefault();
       const { email, pass } = event.target.elements;
       try {
-        const user = app.auth().currentUser;
-        const email_verified = user.emailVerified;
-        if (user !== null && email_verified) {
           await app
           .auth()
-          .signInWithEmailAndPassword(email.value, pass.value);
-        history.push("/dashboard");
-        } else {
-          alert("Please verify your email first");
-        }
+          .signInWithEmailAndPassword(email.value, pass.value).then(() => {
+            const user = app.auth().currentUser;
+            const email_verified = user.emailVerified;
+            if(email_verified) {
+              history.push("/report");
+            } else {
+              alert('Please Verify your email first');
+            }
+          })
+        
         
       } catch (error) {
         alert(error);
@@ -33,6 +39,22 @@ export function Login({ history }){
     },
     [history]
   );
+    const handleResetPassword = () => {
+      var auth = app.auth();
+      if(passwordChange === '') {
+       alert('Email cannot be empty');
+      }
+      auth.sendPasswordResetEmail(passwordChange).then(function() {
+        alert("Check your email to complete your password reset");
+        setPasswordChange('');
+      }).catch(function(error) {
+        console.log(error.msg);
+      });
+
+    }
+    if (currentUser) {
+      return <Redirect to="/report" />;
+    }
     return (
       <div className="max-width">
       <div className="login">
@@ -63,7 +85,22 @@ export function Login({ history }){
         > Sign in</Button> 
         <br />
         <br />
-        <p> Don't have an account yet? <Link to="/signup"> Sign Up </Link> </p>
+        <AlertDialog 
+        text="Forgot Password?"
+        content={
+          <input 
+          type="email"
+          name="resetEmail"
+          value={passwordChange}
+          placeholder="youremail@example.com"
+          label="Reset Email"
+          onChange={e => setPasswordChange(e.target.value)}
+          className="reset__password"
+          />
+        }
+        handleClick={handleResetPassword}
+        />
+        <p style={{ marginTop: '10px' }}> Don't have an account yet? <Link to="/signup"> Sign Up </Link> </p>
         </form>
         </div>
       </div>

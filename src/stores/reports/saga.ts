@@ -2,6 +2,7 @@ import { all, call, fork, put, takeEvery, takeLatest } from 'redux-saga/effects'
 import { ReportActionTypes, Report, GetReportActionType, CreateReportActionType } from './types'
 import { getReportRequest, getReportsRequest, createReportRequest } from '../../services/reportsServices';
 import { fetchReportsSuccess, fetchReportsFailure, createNewReportByCitySuccess, createNewReportByCityFailure, fetchSingleReportFailure, fetchSingleReportSuccess } from './actions'
+import Swal from 'sweetalert2'
 
 function* getReport(action: GetReportActionType){
   const id: string = action.payload.id;
@@ -30,6 +31,13 @@ function* createReport(action: CreateReportActionType){
     yield put(createNewReportByCityFailure(res.message as string))
   } else {
     yield put(createNewReportByCitySuccess())
+    Swal.fire({
+      title: 'Success',
+      text: 'Your Report Is Submitted',
+      icon: 'success'
+    }).then(() => {
+      // return window.location='/'
+    })
   }
 }
 
