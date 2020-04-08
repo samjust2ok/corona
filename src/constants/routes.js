@@ -5,4 +5,5 @@ export const TIPS = '/tips';
 export const REPORT = '/report';
 export const DASHBOARD = '/dashboard';
 export const HEADER = '/header';
-export const NOMATCH = '*';
+export const SEARCHPAGE = '/searchpage';
+export const PROFILE = '/profile'

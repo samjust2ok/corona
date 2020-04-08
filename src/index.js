@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App.tsx';
 import * as serviceWorker from './serviceWorker';
+import GlobalStyle from './GlobalStyle';
 
-ReactDOM.render(
-  <React.StrictMode>
+ReactDOM.render([<React.StrictMode key = {1}>
     <App />
-  </React.StrictMode>,
+    </React.StrictMode>, <GlobalStyle key = {2}/>
+  ],
   document.getElementById('root')
 );
 

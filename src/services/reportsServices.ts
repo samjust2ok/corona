@@ -1,5 +1,5 @@
 import { firestore} from "../base"
-import { Report } from "../stores/reports/types"
+import { Report } from "../constants/types"
 
 export const getReportRequest = async (id: string) => {
   try {
@@ -36,12 +36,12 @@ export const getReportsRequest = async () => {
   }
 } 
 
-export const createReportRequest = async (report: Report) => {
+export const createReportRequest = async (userId: string, report: Report) => {
   try {
-    const res = await firestore.collection('reports').add(report);
+    const res = await firestore.collection('reports').doc(userId).set(report);
     return{
       error: false,
-      data: res.id
+      reponse: res
     }
   } catch (error) {
     return {

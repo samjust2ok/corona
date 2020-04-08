@@ -1,0 +1,20 @@
+@media (max-width: 800px){
+    .c-homepage-animation__worldmap {
+        left: 0;
+        top: -50%;
+        width: 100%;
+    }
+}
+    
+    .c-homepage-animation__worldmap {
+        position: absolute;
+        overflow: hidden;
+        top: 1px;
+        left: 35%;
+        height: 100%;
+        width: 80%;
+        overflow: hidden;
+        border-radius: 50%;
+        transition: .3s ease-in;
+        z-index: -10;
+    }

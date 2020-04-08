@@ -51,7 +51,7 @@
 }
 .navbar-right-item a:hover, a:focus-within, a:active {
   text-decoration: none;
-  outline: rgb(175, 8, 86) dotted 2px;
+  /* outline: rgb(175, 8, 86) dotted 2px; */
   outline-offset: 5px;
 }
 

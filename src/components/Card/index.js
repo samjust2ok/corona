@@ -1,37 +1,29 @@
 import React from 'react';
 import './styles.css';
-import RoomIcon from '@material-ui/icons/Room';
-import Divider from '@material-ui/core/Divider';
 
-const Card = (props) => (
+const Card = () => (
   <div className='card-container'>
-     <h4> <RoomIcon /> {props.name}</h4>
-     <span className="underline"> </span>
-     
+    <h4>Lagos</h4>
     <ul>
       <li className='card-row'>
-        <p className="tc">Total Cases</p>
-        <p>{props.isCases}</p>
+        <p>Total Cases</p>
+        <p>12</p>
       </li>
-      <Divider />
       <li className='card-row'>
-        <p className="p">Positive</p>
-        <p>{props.isPositive}</p>
+        <p>Positive</p>
+        <p>12</p>
       </li>
-      <Divider />
       <li className='card-row'>
-        <p className="n">Negative</p>
-        <p>{props.isNegative}</p>
+        <p>Negative</p>
+        <p>12</p>
       </li>
-      <Divider />
       <li className='card-row'>
-        <p className="r">Recovered</p>
-        <p>{props.isRecovered}</p>
+        <p>Recovered</p>
+        <p>12</p>
       </li>
-      <Divider />
       <li className='card-row'>
-        <p className="d">Death</p>
-        <p>{props.isDeath}</p>
+        <p>Death</p>
+        <p>12</p>
       </li>
     </ul>
   </div>

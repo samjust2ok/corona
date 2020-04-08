@@ -1,112 +1,139 @@
 import React, { useState, useCallback } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import Input from '../../components/Input';
-import AlertDialog from '../../components/Dialog';
-import Button from '@material-ui/core/Button';
+import StyledLogin from '../../styled/StyledLogin';
 import app from "../../base";
-import { useAuthContext } from '../../auth/Auth';
 import './styles.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import CustomInputLarge from '../../components/CustomInputLarge';
+import { Button } from '../../styled/StyledHome';
+import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
+import LinLoader from '../../components/LinLoader';
+import { isES } from '../../utils/appUtils';
+import { getUserById } from '../../services/userServices';
+import { useDispatch } from 'react-redux';
+import { storeUser } from '../../actions/userActions';
 
 
-export function Login({ history }){
-  const { currentUser } = useAuthContext()
-  var [email, setEmail] = useState('');
-  var [pass, setPass] = useState('');
-  var [passwordChange, setPasswordChange] = useState('');
+export function Login(){
+  let history = useHistory()
 
 
-   const handleLogin = useCallback(
-    async event => {
-      event.preventDefault();
-      const { email, pass } = event.target.elements;
-      try {
-          await app
-          .auth()
-          .signInWithEmailAndPassword(email.value, pass.value).then(() => {
-            const user = app.auth().currentUser;
-            const email_verified = user.emailVerified;
-            if(email_verified) {
-              history.push("/report");
-            } else {
-              alert('Please Verify your email first');
-            }
-          })
-        
-        
-      } catch (error) {
-        alert(error);
-      }
-    },
-    [history]
-  );
-    const handleResetPassword = () => {
-      var auth = app.auth();
-      if(passwordChange === '') {
-       alert('Email cannot be empty');
-      }
-      auth.sendPasswordResetEmail(passwordChange).then(function() {
-        alert("Check your email to complete your password reset");
-        setPasswordChange('');
-      }).catch(function(error) {
-        console.log(error.msg);
-      });
+  let [errorFields,setErrorFields] = useState({
+    email: false,
+    password: false
+  })
 
-    }
-    if (currentUser) {
-      return <Redirect to="/report" />;
-    }
-    return (
-      <div className="max-width">
-      <div className="login">
-        <div className="form">
-        <h1> Welcome back. </h1>
-        <p> Sign in to continue from where you stopped. </p>
-        <form onSubmit={handleLogin}>
-        <Input 
-        type="email"
-        name="email"
-        value={email}
-        placeholder="youremail@example.com"
-        label="Email"
-        handleChange={e => setEmail(e.target.value)}
-        />
-        <Input 
-        type="password"
-        name="pass"
-        value={pass}
-        placeholder="*** *** *** ***"
-        label="Pass"
-        handleChange={e => setPass(e.target.value)}
-        />
-        <Button 
-        variant="contained" 
-        color="primary"
-        type="submit"
-        > Sign in</Button> 
-        <br />
-        <br />
-        <AlertDialog 
-        text="Forgot Password?"
-        content={
-          <input 
-          type="email"
-          name="resetEmail"
-          value={passwordChange}
-          placeholder="youremail@example.com"
-          label="Reset Email"
-          onChange={e => setPasswordChange(e.target.value)}
-          className="reset__password"
-          />
-        }
-        handleClick={handleResetPassword}
-        />
-        <p style={{ marginTop: '10px' }}> Don't have an account yet? <Link to="/signup"> Sign Up </Link> </p>
-        </form>
-        </div>
-      </div>
-      </div>
-    );
-  
+
+  const [fieldValues,setFieldValues]= useState({
+    email: '',
+    password: '',
+  })
+
+  const dispatch = useDispatch();
+
+  const setFieldValue = (field,value)=>{
+    setFieldValues(fields=>({
+        ...fields,
+        [field]: value
+    }));
 }
+
+
+const setErrorOnNonFilledFields = ()=>{
+    let state = {
+        password: isES(fieldValues.password),
+        email: isES(fieldValues.email),
+    }
+    setErrorFields(state);
+    return state;
+}
+
+const checkForAnyError = (errorFields)=>{
+    return Object.values(errorFields).includes(true);
+}
+  const emailHandler = (v)=>setFieldValue('email',v)
+  const passwordHandler = (v)=>setFieldValue('password',v)
+
+
+  const [loading,setLoading] = useState(false);
+  const [showLoginError, setShowLoginError] = useState(false);
+
+  const goBack = ()=>history.goBack();
+
+   const handleLogin = useCallback(()=>{
+     let errorFields = setErrorOnNonFilledFields();
+     if(checkForAnyError(errorFields)) return;
+     setLoading(true);
+
+     let { email, password } = fieldValues;
+
+     app.auth().signInWithEmailAndPassword(email, password)
+     .then(response=>{
+       setShowLoginError(false)
+       setLoading(false);
+        const userId = app.auth().currentUser.uid;
+        getUserById(userId,function(data){
+          if(data){
+            setLoading(false)
+            dispatch(storeUser({
+              user:data
+            }));
+            history.push('/profile')
+          }else{
+            setLoading(false)
+            setShowLoginError(true)
+          }
+        }, function(error){
+            setLoading(false)
+        });
+     })
+     .catch(function(error) {
+        setShowLoginError(true);
+        setLoading(false);
+        console.log(error)
+    });
+   });
+
+
+
+    return (
+      <StyledLogin>
+          <div className="Container">
+          <div className="Back">
+            <FontAwesomeIcon onClick = {goBack} icon = 'arrow-left'/>
+          </div>
+          <div className="Header">
+            <h1>Login</h1>
+          </div>
+          <div className="Form">
+              {
+                showLoginError && 
+                <div className="Error-Report">
+                  <FontAwesomeIcon onClick = {()=>setShowLoginError(false)} icon = 'times'/>
+                  <p>Invalid Email or Password</p>
+                </div>
+              }
+             <CustomInputLarge handleChange = {emailHandler} error = {errorFields.email} errorMessage = 'The email address is invalid or is not registered with us' placeHolder = 'Email' type = 'email'/>
+             <CustomInputLarge handleChange = {passwordHandler} error = {errorFields.password} errorMessage = 'Invalid Password' icon = 'eye' icon2 = 'eye-slash' placeHolder = 'Password' type = 'password'/>
+             <ButtonFullWidth onClick = {handleLogin}>
+              Login to your account
+              {
+                loading && <LinLoader/>
+              }
+             </ButtonFullWidth>
+          </div>
+          <div className="Footer">
+              <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+          </div>
+          </div>
+      </StyledLogin>
+    );
+}
+
+const ButtonFullWidth = styled(Button)`
+  width:100% !important;
+  margin-top: 20px;
+  height: 60px;
+`;
 
 export default Login;

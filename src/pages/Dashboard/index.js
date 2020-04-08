@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from '../../components/Card';
-import Background from '../../images/covid-19-map.jpg'
 import BadgeAvatars from '../../components/imgProfile'
 import RoomIcon from '@material-ui/icons/Room';
 import EditIcon from '@material-ui/icons/Edit';
@@ -12,7 +11,7 @@ import { Option } from '../../components/Input'
 import './styles.scss';
 
 const bgImage = {
-  background: `linear-gradient(rgba(0, 0, 0,.6), rgba(0, 0, 0,1)),  url(${Background}) no-repeat`,
+  background: `linear-gradient(rgba(0, 0, 0,.6), rgba(0, 0, 0,1)), no-repeat`,
   backgroundSize: 'cover',
 }
 const MenuStyle = {
