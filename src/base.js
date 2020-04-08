@@ -21,7 +21,7 @@ const firebaseConfig = {
   apiKey:   process.env.API_KEY,
   authDomain: process.env.AUTH_DOMAIN,
   databaseURL: process.env.DATABASE_URL,
-  projectId: process.env.PROJECT_ID,
+  projectId: "covid-app-b2566",
   storageBucket: process.env.STORAGE_BUCKET,
   // messagingSenderId: "724650717987",
   // appId: "1:724650717987:web:1e96e61a05f00140a35296",
