@@ -90,7 +90,7 @@ const Home  = ()=>{
                         <ul>
                             <li>
                                 <FontAwesomeIcon color = '#d2dde8' icon = 'user-alt'/>
-                                <a href="">Create an account</a>
+                                <a href="/signup">Create an account</a>
                             </li>
                             <li>
                                 <FontAwesomeIcon color = '#d2dde8' icon = 'file-medical-alt'/>
