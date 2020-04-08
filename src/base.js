@@ -18,11 +18,11 @@ import 'firebase/database';
 
 
 const firebaseConfig = {
-  apiKey:   process.env.API_KEY,
-  authDomain: process.env.AUTH_DOMAIN,
+  apiKey:   "AIzaSyBWbRFiNl1TdTLgjs-lE71gFX3V8ybNznM",
+  authDomain: "covid-app-b2566.firebaseapp.com",
   databaseURL: "https://covid-app-b2566.firebaseio.com",
   projectId: "covid-app-b2566",
-  storageBucket: process.env.STORAGE_BUCKET,
+  storageBucket: "covid-app-b2566.appspot.com",
   // messagingSenderId: "724650717987",
   // appId: "1:724650717987:web:1e96e61a05f00140a35296",
   // measurementId: "G-LJRVG3223S"
