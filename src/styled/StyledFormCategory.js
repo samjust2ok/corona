@@ -36,20 +36,6 @@ const StyledFormCategory = styled.div`
                 height:100%;
 
 
-                .Loader-Container{
-                    display:flex;
-
-                    div{
-                        flex-grow: 1;
-                        flex-shrink: 0;
-                        :nth-child(1){
-                            width: 90%;
-                        }
-                    }
-
-                    
-                }
-
                 .Two-Field-Phone{
                         display:grid;
                         width:100%;

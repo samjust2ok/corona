@@ -22,7 +22,6 @@
   width: 2px;
   height: 7px;
   border-radius: 10%;
-  background: attr(data-color color);
 }
 .lds-spinner div:nth-child(1) {
   transform: rotate(0deg);

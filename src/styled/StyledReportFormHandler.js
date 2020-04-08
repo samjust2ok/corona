@@ -1,19 +1,17 @@
 import styled from 'styled-components';
 import { devices } from '../utils/styledUtils';
 
-
 const StyledReportFormHandler = styled.div`
     width: 100%;
     transition: .2s;
     position:relative;
     display:flex;
+    display:grid;
+    grid-template-rows: 1fr 40px;
     
 
     .PageIndicators{
-        position:fixed;
-        z-index:10;
         width:100%;
-        bottom:20px;
         display:flex;
         justify-content:center;
         z-index:-1;

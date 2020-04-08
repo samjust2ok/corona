@@ -133,8 +133,6 @@ const Home  = ()=>{
                         <div className="OurPartners">
                             <p>Partners</p>
                             <div className="Partners">
-                                <img src={google} alt=""/>
-                                <img src={gdg} alt=""/>
                                 <img src={ncdc} alt=""/>
                             </div>
                         </div>
@@ -244,9 +242,6 @@ const Home  = ()=>{
                     <p>University of Ibadan</p>
                     <p>Ibadan,</p>
                     <p>Oyo State, Nigeria</p>
-                </div>
-                <div className="Image">
-                    <img src={gdg} alt=""/>
                 </div>
                 </div>
             </Footer>

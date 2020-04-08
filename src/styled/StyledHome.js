@@ -189,12 +189,7 @@ const HeaderContent = styled.div`
                 margin-right:10px;
 
                 :nth-child(1){
-                    transform:scale(1.2);
-                    transform-origin:left;
-                }
-
-                :nth-child(3){
-                    transform:scale(0.7);
+                    transform:scale(0.8);
                     transform-origin:left;
                 }
             }
