@@ -229,6 +229,7 @@ const NavigationContent = styled.div`
              button{
                  a{
                     color:white;
+                    margin:0;
                  }
              }
 
@@ -470,6 +471,7 @@ const Button = styled.button`
         color:white;
         :active{
         color:white;
+        margin: 0;
         }
     }
 
@@ -746,7 +748,6 @@ const StyledShare = styled.div`
             justify-content: space-between;
             font-size: 16px;
             align-items:center;
-            border-bottom
         }
         
         .Dropdown{
