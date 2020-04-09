@@ -1,21 +1,40 @@
 import React, {useState, useEffect, useRef} from 'react';
-import StyledHome, { Information, Navigation, HeaderContent, Button, NavigationContent,Footer, CallCenter } from '../styled/StyledHome';
+import StyledHome, { Information, Navigation, HeaderContent, Button, NavigationContent,Footer, CallCenter, ShareCard } from '../styled/StyledHome';
 import MapSvg from '../components/MapSvg';
-import gdg from '../images/gdg.png';
-import google from '../images/google.png';
+
 import ncdc from '../images/ncdc.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import theme from '../constants/theme';
 import { useTransition,animated } from 'react-spring';
 import TabView from '../components/TabView';
+import { TotalStatistics, Lagos } from '../components/InfoCards';
 
+import {
+    FacebookShareButton,
+    LinkedinShareButton,
+    TwitterShareButton,
+    TelegramShareButton,
+    WhatsappShareButton,
+    PinterestShareButton,
+    FacebookIcon,
+    TwitterIcon,
+    TelegramIcon,
+    WhatsappIcon,
+    LinkedinIcon,
+    PinterestIcon
+} from 'react-share';
+
+const URL = 'report-covid.netlify.com';
+const SHARE_QUOTE = 'Report suspected cases of COVID-19 to help the NCDC combat the spread. | Help flatten the curve';
+const HASHTAG = '#ReportCovid';
+const TITLE = 'REPORT COVID';
 
 const tabs = [
     {
-        title: 'Survival Tips'
+        title: 'Notification'
     },
     {
-        title: 'Notification'
+        title: 'Survival Tips'
     },
     {
         title: 'Emergency'
@@ -24,12 +43,24 @@ const tabs = [
 
 const bgs = ['white',theme.dscBGFull]
 
+
+
+
 const Home  = ()=>{
     const [openMenu,setOpenMenu] = useState(false);
+    const [showShare,setShowShare] = useState(false);
     const infoRef = useRef();
     const navRef = useRef();
     const headerRef = useRef();
 
+    const handleShowSharePop = ()=>{
+        setOpenMenu(false);
+        setShowShare(!showShare)
+    }
+
+    const onSharePopClose = ()=>{
+        setShowShare(false)
+    }
 
     useEffect(()=>{
         const options = {
@@ -38,7 +69,6 @@ const Home  = ()=>{
         let observer = new IntersectionObserver((entries,observer)=>{
             entries.forEach(entry=>{
                 if(!entry.isIntersecting){
-                    console.log(entry.target.dataset.bg)
                     navRef.current.style.backgroundColor = bgs[entry.target.dataset.bg]
                 }else{
                     navRef.current.style.backgroundColor = theme.dscBGFull
@@ -63,12 +93,20 @@ const Home  = ()=>{
         leave: {  left: '-90%',opacity:1},
     })
 
+
+    const transitions3 = useTransition(showShare, null, {
+        from: {transform: 'scale(0.5) translate(-50%,-50%)'},
+        enter: { transform: 'scale(1) translate(-50%,-50%)'},
+        leave: {  transform: 'scale(0.5) translate(-50%,-50%)'},
+    })
+
     const toggleOpenMenu = ()=> setOpenMenu(!openMenu);
 
     
 
     const AnimatedFontAwesomeIcon = animated(FontAwesomeIcon);
     const AnimatedNavigationContent = animated(NavigationContent);
+
     return (
         <StyledHome>
             <Navigation ref = {navRef}>
@@ -82,6 +120,72 @@ const Home  = ()=>{
                      <AnimatedFontAwesomeIcon size = '2x' style = {props} onClick = {toggleOpenMenu} icon = 'bars'/>
                 )
                 }
+                </div>
+                <div className="Links">
+                    <ul>
+                        <li className = "NavItem">
+                            <div className = "NavTitle">
+                                <p>Account</p>
+                                <FontAwesomeIcon icon = 'caret-down'/>
+                            </div>
+                            <div className="Dropdown">
+                                    <li className = "Dropdown-Item Account">
+                                        <a href="/signup">Create an account</a>
+                                        <p>Get started with an account within few seconds</p>
+                                    </li>
+                                    <li className = "Dropdown-Item Account">
+                                        <a href="/login">
+                                            Sign In
+                                        </a>
+                                    </li>
+                            </div>
+                        </li>
+                        <li className = "NavItem">
+                            <p className = "NavTitle">
+                                <p>Share</p>
+                                <FontAwesomeIcon icon = 'caret-down'/>
+                            </p>
+                            <div className="Dropdown">
+                                <li className = "Dropdown-Item Share">
+                                    <WhatsappShareButton separator = '|' url = {URL}>
+                                        <WhatsappIcon round = {true} size = {30}/>
+                                        <span>Whatsapp</span>
+                                    </WhatsappShareButton>
+                                </li>
+                                <li className = "Dropdown-Item Share">
+                                    <FacebookShareButton hashtag = {HASHTAG} quote = {SHARE_QUOTE} url = {URL}>
+                                        <FacebookIcon round = {true} size = {30}/>
+                                        <span>Facebook</span>
+                                    </FacebookShareButton>
+                                </li>
+                                <li className = "Dropdown-Item Share">
+                                    <TwitterShareButton hashtag = {[HASHTAG,'FLATTEN_THE_CURVE']} quote = {SHARE_QUOTE} url = {URL}>
+                                        <TwitterIcon title = {TITLE} round = {true} size = {30}/>
+                                        <span>Twitter</span>
+                                    </TwitterShareButton>
+                                </li>
+                                <li className = "Dropdown-Item Share">
+                                    <LinkedinShareButton title = {TITLE} description = {SHARE_QUOTE} url = {URL}>
+                                        <LinkedinIcon round = {true} size = {30}/>
+                                        <span>Linkedin</span>
+                                    </LinkedinShareButton>
+                                </li>
+                                <li className = "Dropdown-Item Share">
+                                    <TelegramShareButton title = {TITLE} url = {URL}>
+                                        <TelegramIcon round = {true} size = {30}/>
+                                        <span>Telegram</span>
+                                    </TelegramShareButton>
+                                </li>
+                            </div>
+                        </li>
+                        <li className="NavItem">
+                            <Button>
+                               <a href="/report">
+                                   Sign in
+                               </a>
+                            </Button>
+                        </li>
+                    </ul>
                 </div>
             </Navigation>
             {
@@ -101,10 +205,9 @@ const Home  = ()=>{
                                 <a href="">COVID-19 Info</a>
                                 
                             </li>
-                            <li>
+                            <li onClick = {handleShowSharePop}>
                                 <FontAwesomeIcon color = '#d2dde8' icon = 'share-alt'/>
-                                <a href="">Share</a>
-                                
+                                <span>Share</span>
                             </li>
                             {/* <li>
                                 <FontAwesomeIcon color = '#d2dde8' icon = 'hands-helping'/>
@@ -120,6 +223,11 @@ const Home  = ()=>{
                     </AnimatedNavigationContent>
                 )
             }
+            
+            {
+                transitions3.map(({item,key,props})=> item && <Share onSharePopClose = {onSharePopClose} props = {props}/>)
+            }
+
                 <HeaderContent data-bg = {0} ref = {headerRef}>
                     <MapSvg/>
                     <div className="FocusedContent">
@@ -174,13 +282,16 @@ const Home  = ()=>{
                 </div>
                     <TabView tabs = {tabs}>
                         <div className="TabContent">
-
+                            <div className="Statistics">
+                                <TotalStatistics/>
+                                <Lagos/>
+                            </div>
                         </div>
                         <div className="TabContent">
                             
                         </div>
                         <div className="TabContent">
-                            
+                        
                         </div>
                     </TabView>
             </Information>
@@ -249,5 +360,46 @@ const Home  = ()=>{
     )
 }
 
-
+const Share = ({onSharePopClose,props})=>{
+    return (
+        <ShareCard style = {props}>
+            <div className="Header">
+                <h3>Select</h3>
+                <FontAwesomeIcon onClick = {onSharePopClose} icon = 'times'/>
+            </div>
+            <div className="Dropdown">
+                <li className = "Dropdown-Item Share">
+                    <WhatsappShareButton onShareWindowClose = {onSharePopClose} separator = '|' url = {URL}>
+                        <WhatsappIcon round = {true} size = {30}/>
+                        <span>Whatsapp</span>
+                    </WhatsappShareButton>
+                </li>
+                <li className = "Dropdown-Item Share">
+                    <FacebookShareButton onShareWindowClose = {onSharePopClose} hashtag = {HASHTAG} quote = {SHARE_QUOTE} url = {URL}>
+                        <FacebookIcon round = {true} size = {30}/>
+                        <span>Facebook</span>
+                    </FacebookShareButton>
+                </li>
+                <li className = "Dropdown-Item Share">
+                    <TwitterShareButton onShareWindowClose = {onSharePopClose} hashtag = {[HASHTAG,'FLATTEN_THE_CURVE']} quote = {SHARE_QUOTE} url = {URL}>
+                        <TwitterIcon title = {TITLE} round = {true} size = {30}/>
+                        <span>Twitter</span>
+                    </TwitterShareButton>
+                </li>
+                <li className = "Dropdown-Item Share">
+                    <LinkedinShareButton onShareWindowClose = {onSharePopClose} title = {TITLE} description = {SHARE_QUOTE} url = {URL}>
+                        <LinkedinIcon round = {true} size = {30}/>
+                        <span>Linkedin</span>
+                    </LinkedinShareButton>
+                </li>
+                <li className = "Dropdown-Item Share">
+                    <TelegramShareButton onShareWindowClose = {onSharePopClose} title = {TITLE} url = {URL}>
+                        <TelegramIcon round = {true} size = {30}/>
+                        <span>Telegram</span>
+                    </TelegramShareButton>
+                </li>
+        </div>
+        </ShareCard>
+    );
+}
 export default Home;

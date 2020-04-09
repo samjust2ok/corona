@@ -3,6 +3,7 @@ import { devices } from '../utils/styledUtils';
 import cp from '../images/map.jpg';
 import bgc from '../images/curved-pattern.png';
 import man from '../images/men.png';
+import { animated } from 'react-spring';
 
 const glideUp = keyframes`
     0% {
@@ -54,7 +55,7 @@ const Navigation = styled.div`
     display: flex;
     justify-content:space-between;
     border-bottom: 1px solid rgba(240,242,243,0.6);
-    z-index:10000;
+    z-index:100;
     transition: background-color .2s;
 
     div{
@@ -68,6 +69,130 @@ const Navigation = styled.div`
             width:20px;
         }
     }
+
+    .Links{
+        font-family: 'Poppins', sans-serif;
+        display:none;
+        letter-spacing: -0.01em;
+        height:100%;
+        ul{
+            height:100%;
+            display:flex;
+
+            .NavItem{
+                height:100%;
+                position:relative;
+                display:flex;
+                align-items: center;
+                margin-bottom: 0;
+                margin-right: 40px;
+
+                    :hover .Dropdown{
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translate(-50%,0px);
+                    }
+
+                
+
+                    .NavTitle{
+                        display:flex;
+                        min-width: 60px;
+                        height:100%;
+                        display:flex;
+                        align-items:center;
+                        font-weight:700;
+                        color:#03162d;
+                        transition: color .3s;
+
+                        :hover{
+                            color: ${props=>props.theme.dscLightBlue}
+                        }
+
+                        p{
+                            margin-right:10px;
+                        }
+
+
+                        svg:not(:root).svg-inline--fa{
+                            font-size:17px;
+                        }
+
+                        
+                    }
+
+                    .Dropdown{
+                        position:absolute;
+                        width: 250px;
+                        top: 100%;
+                        left: 50%;
+                        will-change: transform opacity;
+                        transform: translate(-50%,-20px);
+                        visibility: hidden;
+                        transition: transform .5s, opacity .5s;
+                        background:white;
+                        opacity:0;
+                        padding: 10px 0;
+                        display:flex;
+                        flex-direction:column;
+                        border: solid 1px rgba(0,0,0,0.04);
+                        box-shadow: 0 8px 16px 0 rgba(3,49,86,0.08);
+                        border-radius: 6px;
+                        z-index: 120;
+                        
+
+                         .Dropdown-Item{
+                            padding: 15px 20px;
+                         }
+
+
+                         .Share{
+                            font-weight:700;
+                            color:#03162d;
+                            :hover{
+                                color: ${props=>props.theme.dscLightBlue};
+                            }
+                             button{
+                                display:flex;
+                                align-items:center;
+
+                                span{
+                                    margin-left:20px;
+                                }
+                             }
+                         }
+
+                         .Account{
+                             a{
+                                color: #03162d;
+                                font-weight:700;
+                                :hover{
+                                    color:${props=>props.theme.dscLightBlue};
+                                }
+                             }
+
+                             p{
+                                 font-size:14px;
+                                 margin-top: 15px;
+                             }
+                         }
+                    }
+
+                    
+            }
+        }
+    }
+
+
+    ${devices.mobileXL`
+        padding: 0px;
+        .Links{
+            display:block;
+        }
+        .MenuIcon{
+            display:none;
+        }
+    `}
 `
 
 const NavigationContent = styled.div`
@@ -107,7 +232,7 @@ const NavigationContent = styled.div`
                  }
              }
 
-             a{
+             a,span{
                  font-size: 18px;
                  font-weight:600;
                  color: black;
@@ -119,6 +244,10 @@ const NavigationContent = styled.div`
              }
          }
      }
+
+     ${devices.mobileXL`
+        display:none;
+    `}
 `
 
 
@@ -439,7 +568,20 @@ const CallCenter = styled.div`
          }
     }
 
-    
+    ${devices.tablet`
+        .ReportNow{
+            .Container{
+                .Content{
+                    h1{
+                        font-size: 3rem;
+                    }
+
+                    p{
+                        font-size:18px;
+                    }
+                }
+            }
+    `}
 `;
 
 
@@ -581,4 +723,62 @@ const Footer = styled.div`
     `}
 `;
 
-export {Home as default, NavigationContent,Navigation,HeaderContent,CallCenter,Button, Information,Footer};
+
+const StyledShare = styled.div`
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        position:absolute;
+        background:white;
+        z-index:100;
+        max-width: 80%;
+        width:350px;
+        border-radius: 10px;
+        overflow:hidden;
+        box-shadow: 0px 0px 0 5000px rgba(0,0,0,.5);
+        z-index:1000;
+        font-family: 'Poppins', sans-serif;
+
+        .Header{
+            padding: 20px 20px;
+            border-bottom: 1px solid rgba(240,242,243,0.6);
+            display:flex;
+            justify-content: space-between;
+            font-size: 16px;
+            align-items:center;
+            border-bottom
+        }
+        
+        .Dropdown{
+            background:white;
+            padding-bottom: 20px;
+            display:flex;
+            flex-direction:column;
+            z-index: 120;
+            
+
+            .Dropdown-Item{
+                padding: 15px 20px;
+            }
+
+
+            .Share{
+                font-weight:700;
+                color:#03162d;
+                :hover{
+                    color: ${props=>props.theme.dscLightBlue};
+                }
+                button{
+                    display:flex;
+                    align-items:center;
+                span{
+                    margin-left:20px;
+                }
+            }
+    }
+}
+`;
+
+const ShareCard = animated(StyledShare)
+
+export {Home as default, NavigationContent,Navigation,HeaderContent,CallCenter,Button, Information,Footer,ShareCard};

@@ -21,13 +21,13 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import Home from './pages/Home';
 
 
-import { faExclamationCircle,faPlaneArrival,faPhone, faCheckCircle ,faArrowLeft, faCaretDown, faCity, faEnvelope, faPlaneDeparture, faFileMedicalAlt,faShareAlt, faPhoneVolume, faBars, faTimes, faCaretRight, faInfo, faUserAlt, faHandsHelping, faInfoCircle, faEye, faEyeSlash, faSearch, faEllipsisH, faCog, faFileMedical, faSignOutAlt, faUserEdit, faAsterisk, faBell, faUser, faAngleRight, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faExclamationCircle,faPlaneArrival,faPhone, faCheckCircle ,faArrowLeft, faCaretDown, faCity, faEnvelope, faPlaneDeparture, faFileMedicalAlt,faShareAlt, faPhoneVolume, faBars, faTimes, faCaretRight, faInfo, faUserAlt, faHandsHelping, faInfoCircle, faEye, faEyeSlash, faSearch, faEllipsisH, faCog, faFileMedical, faSignOutAlt, faUserEdit, faAsterisk, faBell, faUser, faAngleRight, faArrowRight, faUserMinus, faVirus, faThumbsUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import SearchPage from './pages/SearchPage';
 import Profile from './pages/Profile';
 
 
 
-library.add(fab,faCheckCircle,faBell,faArrowRight,faAngleRight,faAsterisk,faUser,faSignOutAlt,faCog,faFileMedical,faPhone,faSearch,faEllipsisH,faExclamationCircle,faEye,faEyeSlash,faArrowLeft,faHandsHelping,faInfoCircle,faUserAlt,faCaretRight,faBars,faTimes,faFileMedicalAlt,faShareAlt,faPlaneArrival, faCheckCircle,faPhone,faPhoneVolume,faPlaneDeparture,faArrowLeft,faCaretDown,faCity,faEnvelope);
+library.add(fab,faThumbsUp,faUserMinus,faVirus,faCheckCircle,faBell,faArrowRight,faAngleRight,faAsterisk,faUser,faSignOutAlt,faCog,faFileMedical,faPhone,faSearch,faEllipsisH,faExclamationCircle,faEye,faEyeSlash,faArrowLeft,faHandsHelping,faInfoCircle,faUserAlt,faCaretRight,faBars,faTimes,faFileMedicalAlt,faShareAlt,faPlaneArrival, faCheckCircle,faPhone,faPhoneVolume,faPlaneDeparture,faArrowLeft,faAngleDown,faCaretDown,faCity,faEnvelope);
 
 const App = () => (
   <Provider store = {store}>

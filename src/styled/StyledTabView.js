@@ -17,8 +17,9 @@ const TabHeader = styled.div`
     background-color: white;
     position:sticky;
     top:70px;
-    z-index:1000;
+    z-index:10;
     max-width: 700px;
+    box-shadow: 0px 10px 35px rgba(255,255,255,.6);
 
 
     .Tab{
@@ -72,14 +73,21 @@ const TabHeader = styled.div`
 const TabBodyDef = styled.div`
     width: 100%;
     display:flex;
-    height:600px;
+    height: auto;
     
 
     .TabContent{
         width:100%;
         flex-shrink:0;
         flex-wrap:nowrap;
-        padding: 10px;
+        padding: 30px 0;
+
+        .Statistics{
+            padding: 0 20px;
+            display: flex;
+            flex-wrap:wrap;
+            justify-content:center;
+        }
     }
 
     ${devices.tablet`
