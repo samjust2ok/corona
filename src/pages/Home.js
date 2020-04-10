@@ -236,12 +236,6 @@ const Home  = ()=>{
                         </Button>
                     </div>
                     <div className = "HeaderFooter">
-                        <div className="OurPartners">
-                            <p>Partners</p>
-                            <div className="Partners">
-                                <img src={ncdc} alt=""/>
-                            </div>
-                        </div>
                         <div className="MoreDetails">
                         <p>Three simple steps</p>
                         <div className="Steps ScrollbarHide">

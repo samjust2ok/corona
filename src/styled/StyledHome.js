@@ -255,13 +255,13 @@ const HeaderContent = styled.div`
     padding: 0 20px;
     position:relative;
     background-color:${props=>props.theme.dscBGLight};
-    height:800px;
+    height:700px;
 
     .FocusedContent{
         z-index:-1;
         width:100%;
         height:60%;
-        padding-top:70px;
+        padding-top:75px;
         display:flex;
         flex-direction:column;
         justify-content:center;
@@ -282,7 +282,7 @@ const HeaderContent = styled.div`
             animation-name: ${glideUp};
             animation-delay: .3s;
             line-height:1.2;
-            margin: 30px 0;
+            margin: 40px 0;
             font-size:15px;
             line-height: 1.5;
             letter-spacing: -0.01em;
