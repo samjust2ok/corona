@@ -75,7 +75,7 @@ const Home  = ()=>{
         },options);
         observer.observe(headerRef.current)
         observer.observe(infoRef.current)
-    })
+    },[])
 
     
 
