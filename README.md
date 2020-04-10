@@ -1,68 +1,192 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Compiled by Adams Paul and DSC - University of Ibadan.
 
-## Available Scripts
+Please Note: State breakdown APIs is not available for nigeria anymore.
 
-In the project directory, you can run:
+## COVID19 APIs
 
-### `yarn start`
+A full documentation of the API
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### EndPoints
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+All Data Endpoint (Global): https://corona.lmao.ninja/all
 
-### `yarn test`
+All Countries Data Endpoint (Global): https://corona.lmao.ninja/countries
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Specific Country Data Endpoint (Global): https://corona.lmao.ninja/countries/Nigeria
 
-### `yarn build`
+All Data Endpoint (Global): https://corona.lmao.ninja/all
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Time Series Endpoint: https://coviddata.github.io/coviddata/v1/countries/stats.json
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Response formats
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+All Data Endpoint (Global): [https://corona.lmao.ninja/all](https://corona.lmao.ninja/all)
 
-### `yarn eject`
+`````
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+{
+  "updated": 1586471401810,
+  "cases": 1598177,
+  "todayCases": 80154,
+  "deaths": 95403,
+  "todayDeaths": 6946,
+  "recovered": 355401,
+  "active": 1147373,
+  "critical": 48953,
+  "casesPerOneMillion": 205,
+  "deathsPerOneMillion": 12,
+  "tests": 12651063,
+  "testsPerOneMillion": 1622.8,
+  "affectedCountries": 211
+}
+``````
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+All Countries Data Endpoint (Global): [https://corona.lmao.ninja/countries](https://corona.lmao.ninja/countries)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`````
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+[
+  {
+    "updated": 1586471401816,
+    "country": "USA",
+    "countryInfo": {
+      "_id": 840,
+      "iso2": "US",
+      "iso3": "USA",
+      "lat": 38,
+      "long": -97,
+      "flag": "https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/us.png"
+    },
+    "cases": 465088,
+    "todayCases": 30161,
+    "deaths": 16510,
+    "todayDeaths": 1722,
+    "recovered": 25139,
+    "active": 423439,
+    "critical": 9823,
+    "casesPerOneMillion": 1405,
+    "deathsPerOneMillion": 50,
+    "tests": 2350377,
+    "testsPerOneMillion": 7101
+  },
+  `````
 
-## Learn More
+Specific Country Data Endpoint (Global): [https://corona.lmao.ninja/countries/Nigeria](https://corona.lmao.ninja/countries/Nigeria)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`````
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+{
+  "updated": 1586471401834,
+  "country": "Nigeria",
+  "countryInfo": {
+    "_id": 566,
+    "iso2": "NG",
+    "iso3": "NGA",
+    "lat": 10,
+    "long": 8,
+    "flag": "https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/ng.png"
+  },
+  "cases": 288,
+  "todayCases": 12,
+  "deaths": 7,
+  "todayDeaths": 1,
+  "recovered": 51,
+  "active": 230,
+  "critical": 2,
+  "casesPerOneMillion": 1,
+  "deathsPerOneMillion": 0,
+  "tests": 5000,
+  "testsPerOneMillion": 24
+}
+`````
 
-### Code Splitting
+Time Series Endpoint: [https://coviddata.github.io/coviddata/v1/countries/stats.json](https://coviddata.github.io/coviddata/v1/countries/stats.json)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+`````
+{
+    "country": {
+      "key": "nigeria",
+      "name": "Nigeria"
+    },
+    "dates": {
+      "2020-02-28": {
+        "new": {
+          "cases": 1,
+          "deaths": 0,
+          "recoveries": 0
+        },
+        "cumulative": {
+          "cases": 1,
+          "deaths": 0,
+          "recoveries": 0
+        }
+      },
+      "2020-02-29": {
+        "new": {
+          "cases": 0,
+          "deaths": 0,
+          "recoveries": 0
+        },
+        "cumulative": {
+          "cases": 1,
+          "deaths": 0,
+          "recoveries": 0
+        }
+      },
+      "2020-03-01": {
+        "new": {
+          "cases": 0,
+          "deaths": 0,
+          "recoveries": 0
+        },
+        "cumulative": {
+          "cases": 1,
+          "deaths": 0,
+          "recoveries": 0
+        }
+      },....
+``````
 
-### Analyzing the Bundle Size
+### JS Query Sample Code For Single Nigeria Data
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+``````
+<script>
+    $.getJSON('https://corona.lmao.ninja/countries/Nigeria', function(data) {
+        var output = document.getElementById('output');
+        output.innerHTML = `
+        <div class="">
+            <h1 class="post-title">
+                # Nigeria Live Stats
+            </h1>
+            <div>
+                <font style="font-size: 20px;">🤪 No of Recovered Cases: <b>${data.recovered}</b></font>
+            </div>
+            <div>
+                <font style="font-size: 20px;">🤢 No of New Cases Today: <b>${data.todayCases}</b></font>
+            </div>
+            <div>
+                <font style="font-size: 20px;">🤒 No of Confirmed Cases: <b>${data.cases}</b></font>
+            </div>
+            <div>
+                <font style="font-size: 20px;">😭 No of Death: <b>${data.deaths}</b></font>
+            </div>
+        
+        </div>
+        `;
 
-### Making a Progressive Web App
+    });
+</script>
+``````
+### JS Query Sample Code For Time Series Nigeria Data
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+````
+fetch("https://coviddata.github.io/coviddata/v1/countries/stats.json")
+  .then(response => response.json())
+  .then(data => {
+    const country = data.find(country => country.country.name == "Nigeria");
+    for (date in country.dates) {
+      console.log(`${date} - ${country.dates[date].cumulative.cases} cases`);
+    }
+  })
+  
+````
