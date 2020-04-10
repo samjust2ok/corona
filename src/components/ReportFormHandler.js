@@ -9,7 +9,6 @@ import { Transition, config } from 'react-spring/renderprops';
 import SymptomsTwo from './SymptomsTwo';
 
 const ReportFormHandler = ()=>{
-    const [active, setActive] = useState(0);
     const [slideState,setSlideState] = useState({
         activeIndex: 0,
         previousIndex:0,
@@ -57,18 +56,6 @@ const ReportFormHandler = ()=>{
                     {idx => props => <Component next = {increment} previous = {decrement}  index = {idx} props = {props}/>}
             </Transition>
 
-            <div className="PageIndicators">
-                {
-                    new Array(6).fill('').map((elem,i)=>{
-                        return (
-                            <div key = {i} data-index = {i} className={`Indicator ${i === slideState.activeIndex ? 'Active':''}`}>
-
-                            </div>
-                        );
-                    })
-                }
-            </div>
-
         </StyledReportFormHandler>
     );
 }
@@ -79,17 +66,17 @@ let Component = ({index,props,next,previous})=>{
             <>
             {
                 index === 0?
-                <UserInfoForm next = {next} previous = {previous} style = {props}/>:
+                <UserInfoForm index = {index} next = {next} previous = {previous} style = {props}/>:
                 index === 1 ?
-                <Symptoms next = {next} previous = {previous} style = {props}/>:
+                <Symptoms index = {index} next = {next} previous = {previous} style = {props}/>:
                 index === 2 ?
-                <SymptomsTwo next = {next} previous = {previous} style = {props}/>:
+                <SymptomsTwo index = {index} next = {next} previous = {previous} style = {props}/>:
                 index === 3 ?
-                <MedicalHistory next = {next} previous = {previous} style = {props}/>:
+                <MedicalHistory index = {index} next = {next} previous = {previous} style = {props}/>:
                 index === 4 ?
-                <TravelHistory next = {next} previous = {previous} style = {props}/>:
+                <TravelHistory index = {index} next = {next} previous = {previous} style = {props}/>:
                 index === 5 ?
-                <General next = {next} previous = {previous} style = {props}/>:
+                <General index = {index} next = {next} previous = {previous} style = {props}/>:
                 null
             }
             </>

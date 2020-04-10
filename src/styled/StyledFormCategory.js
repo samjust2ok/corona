@@ -5,19 +5,15 @@ const StyledFormCategory = styled.div`
     height: 100%;
     width:100%;
     overflow:hidden;
-    padding:20px 40px 40px 40px;
+    padding:0px 40px;
     flex-shrink:0;
     display:grid;
-    grid-template-rows: 60px 60px 1fr;
+    grid-template-rows:100px 1fr 70px;
     position:relative;
 
-    .Logo{
-
-    }
-
-
     .FormHeader{
-        margin:10px 0;
+        display:flex;
+        align-items:center;
 
         h1{
             font-weight:500;
@@ -27,13 +23,17 @@ const StyledFormCategory = styled.div`
 
     .FormContent{
         height:100%;
+        width:100%;
+        overflow:hidden;
+
         .Content{
             height:100%;
+            width:100%;
+
             .Fields{
                 width: 100%;
-                display:flex;
-                flex-direction:column;
                 height:100%;
+                overflow-y:scroll;
 
 
                 .Two-Field-Phone{
@@ -55,31 +55,40 @@ const StyledFormCategory = styled.div`
                     grid-column-gap:15px;
                 }
 
-                .FieldInputs{
-                    height: calc(100% - 100px);
-                    flex:0 0 auto;
-                }
-
                 .ActionButtons{
-                    height:100px;
                     width:100%;
                     display:flex;
-                    flex:0 0 auto;
+                    align-items:center;
                     justify-content:space-between;
+                    margin-top:50px;
                 }
             }
+        }
+    }
 
-            .Form-Illustration{
-                display:none;
-            }
+
+    .PageIndicators{
+        width:100%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        z-index:-1;
+        margin:20px 0;
+        
+        .Indicator{
+            width:calc(100%/7);
+            height:3px;
+            margin:5px;
+            background-color:#93fd93;
+        }
+
+        .Active{
+            background-color:green;
         }
     }
 
     ${devices.mobileXL`
         grid-template-rows: 60px 1fr;
-        .Logo{
-            display:none;
-        }
         .FormContent{
                 .Content{
                 display: flex;
@@ -105,10 +114,6 @@ const StyledFormCategory = styled.div`
 
 
                 }
-
-                .Form-Illustration{
-                    display:block;
-                }
             }
         }
     `}
@@ -117,14 +122,6 @@ const StyledFormCategory = styled.div`
         .FormContent{
                 .Content{
                 display:block;
-
-                .Fields{
-                    width:55%;
-                }
-
-                .Form-Illustration{
-                    display:block;
-                }
             }
         }
     `}

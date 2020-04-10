@@ -1,4 +1,4 @@
-import React, { Children, useState } from 'react';
+import React, {useState } from 'react';
 import FormCategory from './FormCategory'
 import Button from './Button';
 import Option from './Option';
@@ -9,7 +9,7 @@ import options from '../constants/options';
 
 
 
-const MedicalHistory = ({style,next,previous})=>{
+const MedicalHistory = ({style,next,previous,index})=>{
     const selector = useSelector(state=>state.reportForm.medicalHistory);
 
 
@@ -83,21 +83,18 @@ const MedicalHistory = ({style,next,previous})=>{
 
 
     return (
-        <FormCategory style = {style} header = 'Medical History'>
+        <FormCategory index = {index} style = {style} header = 'Medical History'>
             <div className="Content">
-                <div className="Fields">
+                <div className="Fields ScrollbarHide">
                         <div className="FieldInputs">
-                            <Option preValue = {hasHeartDisease} error = {errorFields.hasHeartDisease} handleChange  = {heartDiseaseHandler} label = 'Do you have any heart disease you are being treated for?' options = {options.hearDisease}/>
-                            <Option preValue = {diseaseType} error = {errorFields.diseaseHistory} handleChange = {diseaseHistoryHandler} label = 'Choose which of the following that applies to you' options = {options.diseaseType}/>
-                            <Option preValue = {hasCancer} error = {errorFields.hasCancer} handleChange = {cancerHandler} label = 'Have you been disgonized with any form of cancer?' options = {options.yesNo}/>
+                            <Option preValue = {hasHeartDisease} error = {errorFields.hasHeartDisease} handleChange  = {heartDiseaseHandler} label = 'Any heart disease you are being treated for?' options = {options.hearDisease}/>
+                            <Option preValue = {diseaseType} error = {errorFields.diseaseHistory} handleChange = {diseaseHistoryHandler} label = 'Which of these applies to you' options = {options.diseaseType}/>
+                            <Option preValue = {hasCancer} error = {errorFields.hasCancer} handleChange = {cancerHandler} label = 'Diagonized with any form of cancer?' options = {options.yesNo}/>
                         </div>
                         <div className = 'ActionButtons'>
                             <Button onClick = {handlePrevious} text = 'Back' icon = 'arrow-left' iconPos = 'left' type = 'secondary'/>
                             <Button onClick = {handleNext} text = 'Next'/>
                         </div>
-                </div>
-                <div className="Form-Illustration">
-                    
                 </div>
             </div>
         </FormCategory>

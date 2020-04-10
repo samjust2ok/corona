@@ -55,7 +55,6 @@ const Navigation = styled.div`
     display: flex;
     justify-content:space-between;
     border-bottom: 1px solid rgba(240,242,243,0.6);
-    z-index:100;
     transition: background-color .2s;
 
     div{
@@ -425,14 +424,14 @@ const HeaderContent = styled.div`
                     overflow: hidden;
                     place-items: center;
                     .Step{
-                        z-index:10000;
+                        z-index:50;
                         height: 70px;
                         p{
                             display:block;
                         }
 
                         .Icon{
-                            z-index:10000;
+                            z-index:50;
                         }
                     }
                 }
@@ -732,13 +731,12 @@ const StyledShare = styled.div`
         transform: translate(-50%,-50%);
         position:absolute;
         background:white;
-        z-index:100;
         max-width: 80%;
         width:350px;
         border-radius: 10px;
         overflow:hidden;
         box-shadow: 0px 0px 0 5000px rgba(0,0,0,.5);
-        z-index:1000;
+        z-index:200;
         font-family: 'Poppins', sans-serif;
 
         .Header{

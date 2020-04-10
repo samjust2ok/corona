@@ -1,4 +1,4 @@
-import React, { Children, useState } from 'react';
+import React, { useState } from 'react';
 import FormCategory from './FormCategory'
 import Button from './Button';
 import Option from './Option';
@@ -8,10 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { storeSymptoms } from '../actions/storeActions';
 import options from '../constants/options';
 
-const iconStyle  = {display:'flex',alignItems:'center'}
-
-
-const SymptomsTwo = ({style,next,previous})=>{
+const SymptomsTwo = ({style,next,previous,index})=>{
 
     const selector = useSelector(state=>state.reportForm.symptoms);
 
@@ -77,9 +74,9 @@ const SymptomsTwo = ({style,next,previous})=>{
     }
 
     return (
-        <FormCategory style = {style} header = 'Symtoms'>
+        <FormCategory index = {index} style = {style} header = 'Symtoms'>
             <div className="Content">
-                <div className="Fields">
+                <div className="Fields ScrollbarHide">
                     <div className="FieldInputs">
                         <Option preValue = {hasDifficultyBreathing} error = {errorFields.hasDifficultyBreathing} handleChange = {hasDifficultyBreathingHandler} label = 'Do you have difficulty breathing? OR Fast breathing?' options = {options.difficultyBreathing}/>
                         
@@ -89,9 +86,6 @@ const SymptomsTwo = ({style,next,previous})=>{
                             <Button onClick = {handlePrevious} text = 'Back' icon = 'arrow-left' iconPos = 'left' type = 'secondary'/>
                             <Button onClick = {handleNext}  text = 'Next'/>
                     </div>
-                </div>
-                <div className="Form-Illustration">
-                    
                 </div>
             </div>
         </FormCategory>

@@ -12,7 +12,7 @@ const SearchPage = ()=>{
     const handleTextChange = useCallback((text)=>{
         const filtered = ncdcCallCenter.filter((item)=>item.state.toLowerCase().includes(text.toLowerCase())||item.initials.toLowerCase().includes(text.toLowerCase()));
         setList(filtered)
-    })
+    },[list])
 
     
     const transitions = useTransition(list, null, {
@@ -33,7 +33,7 @@ const SearchPage = ()=>{
                 <div className="Search">
                     <Search handleChange = {handleTextChange}/>
                 </div>
-                <div className="Content">
+                <div className="Content Scrollbar">
                     {
                         list.length === 0 ?
                         
@@ -46,7 +46,7 @@ const SearchPage = ()=>{
                                     <div className="Initials">
                                         {list[i].initials}
                                     </div>
-                                    <div className="Content">
+                                    <div className="Content ScrollbarHide">
                                         <h3>{list[i].state}</h3>
                                         <p>{list[i].number}</p>
                                     </div>

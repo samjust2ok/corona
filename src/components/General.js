@@ -17,7 +17,7 @@ import theme from '../constants/theme';
 import { setAppState } from '../actions/appActions';
 
 
-const General = ({style,previous})=>{
+const General = ({style,previous,index})=>{
     const selector = useSelector(state=>state.reportForm.generalQuestions);
     const reportForm = useSelector(state=>state.reportForm);
     const showLoader = useSelector(state=>state.appState[REPORT_CREATION_LOADING]);
@@ -140,9 +140,9 @@ const General = ({style,previous})=>{
     }
 
     return (
-        <FormCategory style = {style} header = 'General Questions'>
+        <FormCategory index = {index} style = {style} header = 'General Questions'>
             <div className="Content">
-                <div className="Fields">
+                <div className="Fields ScrollbarHide">
                         <div className="FieldInputs">
                             <Option preValue = {ncdcContacted} error = {errorFields.ncdcContacted} handleChange = {ncdcContactedHandler} label = 'Have you been contacted by NCDC before?' options = {options.yesNo}/>
                             <Option preValue = {contactTested} error = {errorFields.contactTested} handleChange = {contactTestedHandler} label = 'Within the last two weeks, have you had contact with someone who tested positive' options = {options.yesNoNotSure}/>
@@ -152,9 +152,6 @@ const General = ({style,previous})=>{
                             <Button onClick = {handlePrevious} text = 'Back' icon = 'arrow-left' iconPos = 'left' type = 'secondary'/>
                             <Button onClick = {handleSubmit} text = 'Report Condition'/>
                         </div>
-                </div>
-                <div className="Form-Illustration">
-                    
                 </div>
                 {
                      transitions.map(({ item, key, props }) =>

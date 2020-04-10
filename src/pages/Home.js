@@ -15,13 +15,11 @@ import {
     TwitterShareButton,
     TelegramShareButton,
     WhatsappShareButton,
-    PinterestShareButton,
     FacebookIcon,
     TwitterIcon,
     TelegramIcon,
     WhatsappIcon,
     LinkedinIcon,
-    PinterestIcon
 } from 'react-share';
 
 const URL = 'report-covid.netlify.com';
@@ -95,9 +93,9 @@ const Home  = ()=>{
 
 
     const transitions3 = useTransition(showShare, null, {
-        from: {transform: 'scale(0.5) translate(-50%,-50%)'},
+        from: {transform: 'scale(0.5) translate(-50%,-50%)', display: 'block'},
         enter: { transform: 'scale(1) translate(-50%,-50%)'},
-        leave: {  transform: 'scale(0.5) translate(-50%,-50%)'},
+        leave: {  transform: 'scale(0) translate(-50%,-50%)', display: 'none'},
     })
 
     const toggleOpenMenu = ()=> setOpenMenu(!openMenu);
@@ -202,7 +200,7 @@ const Home  = ()=>{
                             </li>
                             <li>
                                 <FontAwesomeIcon color = '#d2dde8' icon = 'info-circle'/>
-                                <a href="">COVID-19 Info</a>
+                                <a href="/info">COVID-19 Info</a>
                                 
                             </li>
                             <li onClick = {handleShowSharePop}>

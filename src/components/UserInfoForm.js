@@ -15,7 +15,7 @@ const iconStyle  = {display:'flex',alignItems:'center'}
 const ERROR_MESSAGE = `We can't find this email address in our records, ensure you have an account with us`;
 
 
-const UserInfoForm = ({style,next,previous})=>{
+const UserInfoForm = ({style,next,previous,index})=>{
     const selector = useSelector(state=>state.reportForm.personalInformation);
     const {phoneNumber,email,state,age,gender } = selector;
     const [emailError, setEmailError] = useState('Invalid email address');
@@ -124,9 +124,9 @@ const UserInfoForm = ({style,next,previous})=>{
     }
 
     return (
-        <FormCategory style = {style} header = 'Personal Information'>
+        <FormCategory index = {index} style = {style} header = 'Personal Information'>
             <div className="Content">
-                <div className="Fields">
+                <div className="Fields ScrollbarHide">
                         <div className="FieldInputs">
                         {/* <div className="Field-Layout Two-Field">
                         <CustomInput preValue = {firstName} errorMessage = 'Enter your first name' error = {errorFields.fName} handleChange = {firstNameHandler} placeHolder = 'First name'/>
@@ -153,9 +153,6 @@ const UserInfoForm = ({style,next,previous})=>{
                             <Button text = 'Already reported a case?' type = 'secondary'/>
                             <Button onClick = {handleNext} text = 'Next'/>
                         </div>
-                </div>
-                <div className="Form-Illustration">
-                    
                 </div>
             </div>
         </FormCategory>

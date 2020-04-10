@@ -17,7 +17,7 @@ const StyledCustomInput = styled.div`
 
             input{
                 width:100%;
-                height: 35px;
+                height: 40px;
                 border: ${props=>props.error ? '2px solid #d93025':'1px solid #dadce0'};
                 border-radius:5px;
                 padding: 0 10px;
@@ -44,13 +44,13 @@ const StyledCustomInput = styled.div`
             } 
 
             input[hasinput = true] ~ div{
-                transform: scale(.75) translateY(-35px);
+                transform: scale(.75) translateY(-37px);
                 color:${props=>props.error ? '#d93025':'#5f6368'};
                 background-color:white;
             }
 
             input:focus ~ div{
-                transform: scale(.75) translateY(-35px);
+                transform: scale(.75) translateY(-37px);
                 color:${props=>props.error ? '#d93025':'#1a73e8'};
                 background-color:white;
             }

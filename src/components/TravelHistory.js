@@ -15,7 +15,7 @@ import options from '../constants/options';
 const iconStyle  = {display:'flex',alignItems:'center'}
 
 
-const TravelHistory = ({style,next,previous})=>{
+const TravelHistory = ({style,next,previous,index})=>{
     
 
     const selector = useSelector(state=>state.reportForm.travelHistory);
@@ -102,9 +102,9 @@ const TravelHistory = ({style,next,previous})=>{
 
     
     return (
-        <FormCategory style = {style} header = 'Travel History'>
+        <FormCategory index = {index} style = {style} header = 'Travel History'>
             <div className="Content">
-                <div className="Fields">
+                <div className="Fields ScrollbarHide">
                 <div className="FieldInputs">
                     <Option preValue = {hasTravelled} error = {errorFields.hasTravelled} handleChange = {hasTravelledHandler} label = 'Have you been out of the country within the last three months?' options = {options.yesNo}/>
                     {
@@ -129,9 +129,6 @@ const TravelHistory = ({style,next,previous})=>{
                             <Button onClick = {handlePrevious} text = 'Back' icon = 'arrow-left' iconPos = 'left' type = 'secondary'/>
                             <Button onClick = {handleNext}  text = 'Next'/>
                         </div>
-                </div>
-                <div className="Form-Illustration">
-                    
                 </div>
             </div>
         </FormCategory>

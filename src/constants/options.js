@@ -46,12 +46,11 @@ export default {
         hearDisease: [
             {
                 title: 'Yes',
-                desc: 'I currently visit for the treatment of a heart disease',
+                desc: 'I currently visit the hos for the treatment of a heart disease',
                 value:true,
             },
             {
                 title: 'No',
-                desc: 'I haven\'t been treated for disease before',
                 value:false
             }
         ],

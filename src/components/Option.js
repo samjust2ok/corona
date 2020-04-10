@@ -8,7 +8,7 @@ const Option = ({label, error, complimentPreValue, preValue, complimentHandler ,
    
 
     const getSelectedIndex = (selectedValue)=>{
-        let index = _.findIndex(options, (o)=>o.value == selectedValue);
+        let index = _.findIndex(options, (o)=>o.value === selectedValue);
         if(index === -1) return options.length;
         return index;
     }

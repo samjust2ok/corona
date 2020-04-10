@@ -10,7 +10,7 @@ import options from '../constants/options';
 const iconStyle  = {display:'flex',alignItems:'center'}
 
 
-const Symptoms = ({style,next,previous})=>{
+const Symptoms = ({style,next,previous, index})=>{
     const dispatch = useDispatch();
     const selector = useSelector(state=>state.reportForm.symptoms);
 
@@ -95,9 +95,9 @@ const Symptoms = ({style,next,previous})=>{
     
     
     return (
-        <FormCategory style = {style} header = 'Symtoms'>
+        <FormCategory index = {index} style = {style} header = 'Symtoms'>
             <div className="Content">
-                <div className="Fields">
+                <div className="Fields ScrollbarHide">
                     <div className="FieldInputs">
                         <Option preValue = {hasFever} complimentPreValue = {feverSeverity} error = {errorFields.hasFever} handleChange = {hasFeverHandler} complimentHandler = {feverSeverityHandler} hasCompliment = {true} compliment = {options.complimentFever} label = 'Do you have a fever?' options = {options.hasCough}/>
                         <Option preValue = {hasCough} complimentPreValue = {coughType} complimentHandler = {coughTypeHandler} error = {errorFields.hasCough} handleChange = {hasCoughHandler} hasCompliment = {true} compliment = {options.complimentCough} label = 'Do you have Cough?' options = {options.yesNo}/>
@@ -108,9 +108,6 @@ const Symptoms = ({style,next,previous})=>{
                             <Button onClick = {handlePrevious} text = 'Back' icon = 'arrow-left' iconPos = 'left' type = 'secondary'/>
                             <Button onClick = {handleNext}  text = 'Next'/>
                     </div>
-                </div>
-                <div className="Form-Illustration">
-                    
                 </div>
             </div>
         </FormCategory>

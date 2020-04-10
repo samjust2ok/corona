@@ -15,7 +15,7 @@ const StyledCustomSelect = styled.div`
         .SelectorDisplay{
             width: 100%;
             position:relative;
-            height: 35px;
+            height: 40px;
             border: ${props=>props.error ? '2px solid #d93025':'1px solid #dadce0'};
             border-radius:5px;
             padding: 0 10px;
@@ -44,7 +44,7 @@ const StyledCustomSelect = styled.div`
             }
 
             .PlaceHolder[optionselected = false]{
-                transform: scale(.75) translateY(-35px);
+                transform: scale(.75) translateY(-37px);
                 color:${props=>props.error ? '#d93025':'#5f6368'};
                 background-color:white;
                 padding:0 6px;
@@ -57,7 +57,7 @@ const StyledCustomSelect = styled.div`
         }
 
         .SelectorDisplay[focused = true] .PlaceHolder{
-            transform: scale(.75) translateY(-35px);
+            transform: scale(.75) translateY(-37px);
             padding:0 6px;
             color:${props=>props.error ? '#d93025':'#1a73e8'};
             background-color:white;
