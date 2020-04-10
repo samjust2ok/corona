@@ -178,7 +178,7 @@ const Home  = ()=>{
                         </li>
                         <li className="NavItem">
                             <Button>
-                               <a href="/report">
+                               <a href="/login">
                                    Sign in
                                </a>
                             </Button>
