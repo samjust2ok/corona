@@ -1,38 +1,40 @@
 import styled from 'styled-components';
 import { devices } from '../utils/styledUtils';
+import { animated } from 'react-spring';
 
-const StyledFormCategory = styled.div`
+let StyledFormCategory = styled.div`
     height: 100%;
     width:100%;
     overflow:hidden;
-    padding:0px 40px;
+    padding:0px 30px;
     flex-shrink:0;
-    display:grid;
-    grid-template-rows:100px 1fr 70px;
     position:relative;
+    display:flex;
+    flex-direction:column;
 
     .FormHeader{
         display:flex;
         align-items:center;
+        height:70px;
+        flex-shrink:0;
 
         h1{
             font-weight:500;
-            font-size:25px;
+            font-size:20px;
         }
     }
 
     .FormContent{
-        height:100%;
         width:100%;
-        overflow:hidden;
+        flex-grow:1;
+        padding: 30px 0;
+    
 
         .Content{
-            height:100%;
             width:100%;
 
             .Fields{
                 width: 100%;
-                height:100%;
                 overflow-y:scroll;
 
 
@@ -66,30 +68,16 @@ const StyledFormCategory = styled.div`
         }
     }
 
-
-    .PageIndicators{
-        width:100%;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        z-index:-1;
-        margin:20px 0;
-        
-        .Indicator{
-            width:calc(100%/7);
-            height:3px;
-            margin:5px;
-            background-color:#93fd93;
-        }
-
-        .Active{
-            background-color:green;
-        }
-    }
-
     ${devices.mobileXL`
         grid-template-rows: 60px 1fr;
+
+        .FormHeader{
+            h1{
+                font-size:25px;
+            }
+        }
         .FormContent{
+            padding:0;
                 .Content{
                 display: flex;
 
@@ -122,10 +110,12 @@ const StyledFormCategory = styled.div`
         .FormContent{
                 .Content{
                 display:block;
-            }
+            } 
         }
     `}
 
 `;
+
+StyledFormCategory = animated(StyledFormCategory);
 
 export default StyledFormCategory;

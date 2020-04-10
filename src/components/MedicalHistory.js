@@ -9,7 +9,7 @@ import options from '../constants/options';
 
 
 
-const MedicalHistory = ({style,next,previous,index})=>{
+const MedicalHistory = ({style,next,previous})=>{
     const selector = useSelector(state=>state.reportForm.medicalHistory);
 
 
@@ -83,7 +83,7 @@ const MedicalHistory = ({style,next,previous,index})=>{
 
 
     return (
-        <FormCategory index = {index} style = {style} header = 'Medical History'>
+        <FormCategory style = {style} header = 'Medical History'>
             <div className="Content">
                 <div className="Fields ScrollbarHide">
                         <div className="FieldInputs">

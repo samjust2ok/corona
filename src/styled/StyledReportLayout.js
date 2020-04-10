@@ -6,9 +6,11 @@ const StyledReportLayout = styled.div`
     height:100%;
     display:flex;
     justify-content:center;
+    transition: background-color .2s ease-in;
 
     ${devices.mobileXL`
         align-items:center;
+        background-color: rgb(24, 28, 32);
     `}
 `;
 

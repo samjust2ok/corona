@@ -17,7 +17,7 @@ import theme from '../constants/theme';
 import { setAppState } from '../actions/appActions';
 
 
-const General = ({style,previous,index})=>{
+const General = ({style,previous})=>{
     const selector = useSelector(state=>state.reportForm.generalQuestions);
     const reportForm = useSelector(state=>state.reportForm);
     const showLoader = useSelector(state=>state.appState[REPORT_CREATION_LOADING]);
@@ -140,7 +140,7 @@ const General = ({style,previous,index})=>{
     }
 
     return (
-        <FormCategory index = {index} style = {style} header = 'General Questions'>
+        <FormCategory style = {style} header = 'General Questions'>
             <div className="Content">
                 <div className="Fields ScrollbarHide">
                         <div className="FieldInputs">

@@ -15,7 +15,7 @@ const iconStyle  = {display:'flex',alignItems:'center'}
 const ERROR_MESSAGE = `We can't find this email address in our records, ensure you have an account with us`;
 
 
-const UserInfoForm = ({style,next,previous,index})=>{
+const UserInfoForm = ({style,next})=>{
     const selector = useSelector(state=>state.reportForm.personalInformation);
     const {phoneNumber,email,state,age,gender } = selector;
     const [emailError, setEmailError] = useState('Invalid email address');
@@ -124,7 +124,7 @@ const UserInfoForm = ({style,next,previous,index})=>{
     }
 
     return (
-        <FormCategory index = {index} style = {style} header = 'Personal Information'>
+        <FormCategory style = {style} header = 'Personal Information'>
             <div className="Content">
                 <div className="Fields ScrollbarHide">
                         <div className="FieldInputs">

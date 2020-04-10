@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { storeSymptoms } from '../actions/storeActions';
 import options from '../constants/options';
 
-const SymptomsTwo = ({style,next,previous,index})=>{
+const SymptomsTwo = ({style,next,previous})=>{
 
     const selector = useSelector(state=>state.reportForm.symptoms);
 
@@ -74,7 +74,7 @@ const SymptomsTwo = ({style,next,previous,index})=>{
     }
 
     return (
-        <FormCategory index = {index} style = {style} header = 'Symtoms'>
+        <FormCategory style = {style} header = 'Symtoms'>
             <div className="Content">
                 <div className="Fields ScrollbarHide">
                     <div className="FieldInputs">

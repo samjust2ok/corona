@@ -10,7 +10,7 @@ import options from '../constants/options';
 const iconStyle  = {display:'flex',alignItems:'center'}
 
 
-const Symptoms = ({style,next,previous, index})=>{
+const Symptoms = ({style,next,previous})=>{
     const dispatch = useDispatch();
     const selector = useSelector(state=>state.reportForm.symptoms);
 
@@ -95,7 +95,7 @@ const Symptoms = ({style,next,previous, index})=>{
     
     
     return (
-        <FormCategory index = {index} style = {style} header = 'Symtoms'>
+        <FormCategory style = {style} header = 'Symtoms'>
             <div className="Content">
                 <div className="Fields ScrollbarHide">
                     <div className="FieldInputs">

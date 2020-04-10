@@ -15,7 +15,7 @@ import options from '../constants/options';
 const iconStyle  = {display:'flex',alignItems:'center'}
 
 
-const TravelHistory = ({style,next,previous,index})=>{
+const TravelHistory = ({style,next,previous})=>{
     
 
     const selector = useSelector(state=>state.reportForm.travelHistory);
@@ -102,7 +102,7 @@ const TravelHistory = ({style,next,previous,index})=>{
 
     
     return (
-        <FormCategory index = {index} style = {style} header = 'Travel History'>
+        <FormCategory style = {style} header = 'Travel History'>
             <div className="Content">
                 <div className="Fields ScrollbarHide">
                 <div className="FieldInputs">
