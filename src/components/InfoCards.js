@@ -32,7 +32,7 @@ const InfoCard = ({title, img, children})=>{
 }
 
 
-const TotalStatistics = ()=>{
+const TotalStatistics = ({data})=>{
     return (
         <InfoCard img = {nigeria_2} title = {`nigeria's total statistics`}>
             <p>Statistics Today</p>
@@ -42,28 +42,28 @@ const TotalStatistics = ()=>{
                     <FontAwesomeIcon icon = 'virus'/>
                     <p>Total Confirmed cases</p>
                     </div>
-                    <p>276</p>
+                    <p>{data.cases}</p>
                 </li>
                 <li>
                     <div>
                     <FontAwesomeIcon icon = 'file-medical'/>
                     <p>New Cases</p>
                     </div>
-                    <p>22</p>
+                    <p>{data.todayCases}</p>
                 </li>
                 <li>
                     <div>
                     <FontAwesomeIcon icon = 'thumbs-up'/>
                     <p>Recovered</p>
                     </div>
-                    <p>44</p>
+                    <p>{data.recovered}</p>
                 </li>
                 <li>
                     <div>
                     <FontAwesomeIcon icon = 'user-minus'/>
                     <p>Death</p>
                     </div>
-                    <p>6</p>
+                    <p>{data.deaths}</p>
                 </li>
             </ul>
         </InfoCard>

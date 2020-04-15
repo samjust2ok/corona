@@ -21,6 +21,8 @@ import {
     WhatsappIcon,
     LinkedinIcon,
 } from 'react-share';
+import { useDispatch, useSelector } from 'react-redux';
+import { getLiveCases } from '../actions/apiActions';
 
 const URL = 'report-covid.netlify.com';
 const SHARE_QUOTE = 'Report suspected cases of COVID-19 to help the NCDC combat the spread. | Help flatten the curve';
@@ -42,14 +44,13 @@ const tabs = [
 const bgs = ['white',theme.dscBGFull]
 
 
-
-
 const Home  = ()=>{
     const [openMenu,setOpenMenu] = useState(false);
     const [showShare,setShowShare] = useState(false);
     const infoRef = useRef();
     const navRef = useRef();
     const headerRef = useRef();
+    const casesSelector = useSelector(state=>state.liveCases.nigeria);
 
     const handleShowSharePop = ()=>{
         setOpenMenu(false);
@@ -60,10 +61,15 @@ const Home  = ()=>{
         setShowShare(false)
     }
 
+    const dispatch = useDispatch()
+
     useEffect(()=>{
+        // Set the options object for the observer
         const options = {
             rootMargin: '-70px 0px 0px 0px'
         }
+
+        //Declare the observer to watch for navigation bacground color change
         let observer = new IntersectionObserver((entries,observer)=>{
             entries.forEach(entry=>{
                 if(!entry.isIntersecting){
@@ -75,6 +81,9 @@ const Home  = ()=>{
         },options);
         observer.observe(headerRef.current)
         observer.observe(infoRef.current)
+        
+        //Call to get the live statistics from ncdc
+        dispatch(getLiveCases())
     },[])
 
     
@@ -275,7 +284,7 @@ const Home  = ()=>{
                     <TabView tabs = {tabs}>
                         <div className="TabContent">
                             <div className="Statistics">
-                                <TotalStatistics/>
+                                <TotalStatistics data = {casesSelector}/>
                                 <Lagos/>
                             </div>
                         </div>

@@ -2,10 +2,12 @@ import { all, call, fork, put, takeEvery, takeLatest } from 'redux-saga/effects'
 import { ReportActionTypes, Report, GetReportActionType, CreateReportActionType } from '../constants/types'
 import { getReportRequest, getReportsRequest, createReportRequest } from '../services/reportsServices';
 import { fetchReportsSuccess, fetchReportsFailure, createNewReportByCitySuccess, createNewReportByCityFailure, fetchSingleReportFailure, fetchSingleReportSuccess } from '../actions/actions'
-import { CREATE_REPORT } from '../constants/actionTypes';
+import { CREATE_REPORT, GET_LIVE_CASES } from '../constants/actionTypes';
 import { setAppState } from '../actions/appActions';
 import { REPORT_CREATION_LOADING, SHOW_REPORT_CREATION_FAILURE, SHOW_REPORT_CREATION_SUCCESS } from '../constants/labels';
 import { getUserId } from '../services/userServices';
+import axios from 'axios';
+import { storeLiveCases } from '../actions/apiActions';
 
 function* getReport(action: GetReportActionType){
   const id: string = action.payload.id;
@@ -78,7 +80,12 @@ function* createReport(action: CreateReportActionType){
 
 
 
-
+function* getLiveCases(){
+  const res = yield axios.get('https://corona.lmao.ninja/countries/Nigeria');
+  yield put(storeLiveCases({
+    data: res.data
+  }))
+}
 
 
 
@@ -94,10 +101,15 @@ function* watchCreateReport(){
   yield takeEvery(CREATE_REPORT, createReport)
 }
 
+function* watchGetLiveCases(){
+  yield takeLatest(GET_LIVE_CASES, getLiveCases)
+}
+
 export default function* reportSaga(){
   yield all([
     fork(watchGetReport),
     fork(watchFetchReports),
-    fork(watchCreateReport)
+    fork(watchCreateReport),
+    fork(watchGetLiveCases)
   ]);
 }
