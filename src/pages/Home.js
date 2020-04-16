@@ -1,13 +1,13 @@
 import React, {useState, useEffect, useRef} from 'react';
 import StyledHome, { Information, Navigation, HeaderContent, Button, NavigationContent,Footer, CallCenter, ShareCard } from '../styled/StyledHome';
 import MapSvg from '../components/MapSvg';
-
-import ncdc from '../images/ncdc.png';
+import imap from '../images/imap.png';
+import gmap from '../images/gmap.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import theme from '../constants/theme';
 import { useTransition,animated } from 'react-spring';
 import TabView from '../components/TabView';
-import { TotalStatistics, Lagos } from '../components/InfoCards';
+import { TotalStatistics, World } from '../components/InfoCards';
 
 import {
     FacebookShareButton,
@@ -47,14 +47,19 @@ const bgs = ['white',theme.dscBGFull]
 const Home  = ()=>{
     const [openMenu,setOpenMenu] = useState(false);
     const [showShare,setShowShare] = useState(false);
+    const [showIphoneHelp,setShowIphoneHelp] = useState(false);
     const infoRef = useRef();
     const navRef = useRef();
     const headerRef = useRef();
-    const casesSelector = useSelector(state=>state.liveCases.nigeria);
+    const casesSelector = useSelector(state=>state.liveCases);
 
     const handleShowSharePop = ()=>{
         setOpenMenu(false);
         setShowShare(!showShare)
+    }
+
+    const handleShowIphoneHelp = ()=>{
+        setShowIphoneHelp(true);
     }
 
     const onSharePopClose = ()=>{
@@ -107,6 +112,12 @@ const Home  = ()=>{
         leave: {  transform: 'scale(0) translate(-50%,-50%)', display: 'none'},
     })
 
+    const transitions4 = useTransition(showIphoneHelp, null, {
+        from: {transform: 'translate(-50%, -55%)', opacity: 0, boxShadow: '0px 0px 0px 0px rgba(0,0,0,0)'},
+        enter: { transform: 'translate(-50%, -50%)', opacity: 1, boxShadow: '0px 0px 0px 10000px rgba(0,0,0,.4)'},
+        leave: {  transform: 'translate(-50%, -55%)', opacity: 0, boxShadow: '0px 0px 0px 0px rgba(0,0,0,0)'},
+    })
+
     const toggleOpenMenu = ()=> setOpenMenu(!openMenu);
 
     
@@ -124,7 +135,7 @@ const Home  = ()=>{
                 {
                      transitions.map(({ item, key, props }) =>
                      item ? <AnimatedFontAwesomeIcon key = {key} size = '2x' style = {props} onClick = {toggleOpenMenu} icon = 'times'/>:
-                     <AnimatedFontAwesomeIcon size = '2x' style = {props} onClick = {toggleOpenMenu} icon = 'bars'/>
+                     <AnimatedFontAwesomeIcon key = {key} size = '2x' style = {props} onClick = {toggleOpenMenu} icon = 'bars'/>
                 )
                 }
                 </div>
@@ -235,6 +246,28 @@ const Home  = ()=>{
                 transitions3.map(({item,key,props})=> item && <Share onSharePopClose = {onSharePopClose} props = {props}/>)
             }
 
+            {
+                transitions4.map(({item,key,props})=> item && (
+                    <animated.div style = {props} key = {key} className="Help">
+                        <div className="Header">
+                            <h4>How to</h4>
+                            <FontAwesomeIcon onClick = {()=>setShowIphoneHelp(false)} icon = "times"/>
+                        </div>
+                        <ol className = "Content">
+                            <li>Open the Settings app and tap on “Privacy.”</li>
+                            <li>From here, select “Location Services.”</li>
+                            <li>Scroll down in this screen and tap on “System Services.”</li>
+                            <li>From the next screen, tap on “Significant Locations.”</li>
+                            <li>Locate the History section, which collects and groups places based on how often you’ve visited
+                                them.</li>
+                            <li>When you tap on a location collection from the “History” section, it will show you a visual
+                                breakdown in the next screen.</li>
+                            <li>You’ll see the map of all locations at the top of the display.</li>
+                        </ol>
+                    </animated.div>
+                ))
+            }
+
                 <HeaderContent data-bg = {0} ref = {headerRef}>
                     <MapSvg/>
                     <div className="FocusedContent">
@@ -276,6 +309,30 @@ const Home  = ()=>{
                     
                     
                 </HeaderContent>
+            <Information className = "TrackLocation" bg = {1} ref = {infoRef}>
+                <div className = "Header">
+                    <h1>Track where you've been recently</h1>
+                    <p>Help the authorities know where to look</p>
+                </div>
+                 <div className="TrackButtons">
+                    <button className="TButton">
+                        <a href="https://www.google.com/maps/timeline">
+                            <span>
+                                <img src={gmap} alt=""/>
+                            </span>
+                            <span>Android</span>
+                        </a>
+                    </button>
+                    <button onClick = {handleShowIphoneHelp} className="TButton">
+                        <a href="#">
+                            <span>
+                                <img src={imap} alt=""/>
+                            </span>
+                            <span>Apple</span>
+                        </a>
+                    </button>
+                 </div>
+            </Information>
             <Information bg = {1} ref = {infoRef}>
                 <div className = "Header">
                     <h1>Let's help keep Nigeria safe</h1>
@@ -284,8 +341,8 @@ const Home  = ()=>{
                     <TabView tabs = {tabs}>
                         <div className="TabContent">
                             <div className="Statistics">
-                                <TotalStatistics data = {casesSelector}/>
-                                <Lagos/>
+                                <TotalStatistics data = {casesSelector.nigeria}/>
+                                <World data = {casesSelector.world}/>
                             </div>
                         </div>
                         <div className="TabContent">

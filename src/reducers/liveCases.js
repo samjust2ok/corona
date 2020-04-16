@@ -6,6 +6,9 @@ import { produce } from 'immer';
 const initialState = {
     nigeria:{
 
+    },
+    world: {
+
     }
 }
 
@@ -13,10 +16,9 @@ const initialState = {
 
 export default handleActions({
     [STORE_LIVE_CASES]: produce((state,action)=>{
-        let data = action.payload.data
-        let property = data.country.toLowerCase()
-       state[property] = {
-           ...state.property,
+        let {data,place} = action.payload
+       state[place] = {
+           ...state[place],
            ...data
        }
     }),

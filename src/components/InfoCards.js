@@ -5,9 +5,9 @@ import {Info} from '../styled/StyledCardDeck';
 import nigeria from '../images/nigeria.jpg';
 import nigeria_2 from '../images/nigeria2.jpg'
 import corona from '../images/corona.jpg';
-import lagos from '../images/lagos.jpg';
+import world from '../images/world.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import format from 'format-number';
 
 const InfoCard = ({title, img, children})=>{
     return (
@@ -42,28 +42,28 @@ const TotalStatistics = ({data})=>{
                     <FontAwesomeIcon icon = 'virus'/>
                     <p>Total Confirmed cases</p>
                     </div>
-                    <p>{data.cases}</p>
+                    <p>{format()(data.cases)}</p>
                 </li>
                 <li>
                     <div>
                     <FontAwesomeIcon icon = 'file-medical'/>
                     <p>New Cases</p>
                     </div>
-                    <p>{data.todayCases}</p>
+                    <p>{format()(data.todayCases)}</p>
                 </li>
                 <li>
                     <div>
                     <FontAwesomeIcon icon = 'thumbs-up'/>
                     <p>Recovered</p>
                     </div>
-                    <p>{data.recovered}</p>
+                    <p>{format()(data.recovered)}</p>
                 </li>
                 <li>
                     <div>
                     <FontAwesomeIcon icon = 'user-minus'/>
                     <p>Death</p>
                     </div>
-                    <p>{data.deaths}</p>
+                    <p>{format()(data.deaths)}</p>
                 </li>
             </ul>
         </InfoCard>
@@ -71,34 +71,42 @@ const TotalStatistics = ({data})=>{
 }
 
 
-const Lagos = ()=>{
+const World = ({data})=>{
     return (
-        <InfoCard img = {lagos} title = {`Lagos today`}>
-            <p>Total Cases Today</p>
+        <InfoCard img = {world} title = {`round the globe`}>
+            <p>Statistics Today</p>
             <ul>
                 <li>
-                <FontAwesomeIcon />
+                    <div>
+                    <FontAwesomeIcon icon = 'virus'/>
                     <p>Total Confirmed cases</p>
-                    <p>276</p>
+                    </div>
+                    <p>{format()(data.cases)}</p>
                 </li>
                 <li>
-                <FontAwesomeIcon />
+                    <div>
+                    <FontAwesomeIcon icon = 'file-medical'/>
                     <p>New Cases</p>
-                    <p>22</p>
+                    </div>
+                    <p>{format()(data.todayCases)}</p>
                 </li>
                 <li>
-                <FontAwesomeIcon />
+                    <div>
+                    <FontAwesomeIcon icon = 'thumbs-up'/>
                     <p>Recovered</p>
-                    <p>44</p>
+                    </div>
+                    <p>{format()(data.recovered)}</p>
                 </li>
                 <li>
-                    <FontAwesomeIcon />
+                    <div>
+                    <FontAwesomeIcon icon = 'user-minus'/>
                     <p>Death</p>
-                    <p>6</p>
+                    </div>
+                    <p>{format()(data.deaths)}</p>
                 </li>
             </ul>
         </InfoCard>
     );
 }
 
-export {TotalStatistics,Lagos};
+export {TotalStatistics,World};

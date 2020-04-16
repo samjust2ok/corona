@@ -41,6 +41,7 @@ const Info = styled.div`
         background: url(${props=>props.img});
         background-size:cover;
         background-repeat:no-repeat;
+        background-position:0 -20px;
         height:100px;
         z-index:10;
         width:100%;

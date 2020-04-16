@@ -2,6 +2,7 @@ import styled, {keyframes} from 'styled-components';
 import { devices } from '../utils/styledUtils';
 import cp from '../images/map.jpg';
 import bgc from '../images/curved-pattern.png';
+import cpb from '../images/checked-pattern-blue.png';
 import man from '../images/men.png';
 import { animated } from 'react-spring';
 
@@ -39,7 +40,157 @@ const moveCurve = keyframes`
 `;
 const Home = styled.div`
     width:100vw;
-    /* overflow:hidden; */
+
+
+    .Help{
+        top: 50%;
+        left: 50%;
+        position:absolute;
+        background:white;
+        height:500px;
+        width:600px;
+        max-width: 80%;
+        border-radius: 5px;
+        overflow:hidden;
+        box-shadow: 0px 0px 0 5000px rgba(0,0,0,.3);
+        z-index:200;
+        font-family: 'Poppins', sans-serif;
+
+            .Header{
+                display:flex;
+                justify-content:space-between;
+                padding:10px 15px;
+                border-bottom: 1px solid rgba(240,242,243,0.6);
+
+                svg:not(:root).svg-inline--fa{
+                    font-size:18px;
+                    cursor:pointer;
+                }
+
+            }
+
+            .Content{
+                padding:10px 15px;
+                height:100%;
+                li{
+                    font-size: 14px;
+                    margin: 10px 0;
+                    list-style-position: inside;
+                }
+            }
+    }
+
+    .TrackLocation{
+        padding-bottom:40px;
+        border-bottom: 1px solid rgba(240,242,243,0.6);
+        position:relative;
+        z-index:10;
+
+        .TrackButtons{
+            padding: 0 20px;
+            .TButton{
+                background-color:white;
+                border:none;
+                padding: 7px 15px;
+                box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08); 
+                border-radius:3px;
+                margin-right:30px;
+                transition: transform .2s ease-in;
+
+                :hover{
+                    transform: translateY(-5px);
+                }
+                a{
+                    display:flex;
+                    align-items:center;
+                    text-transform:uppercase;
+                    color: #5e72e4;
+                    span{
+
+                        :nth-child(1){
+                            margin-right:10px;
+                        }
+                        img{
+                            height:20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    ${devices.mobileXL`
+        .Help{
+            height:auto;
+
+            .Header{
+                padding: 20px 20px;
+
+                h4{
+                    font-size: 18px;
+                }
+            }
+
+            .Content{
+                padding: 20px 20px;
+
+                li{
+                    font-size:16px;
+                    margin: 15px 0;
+                }
+            }
+        }
+        .TrackLocation{
+            height: 550px;
+            border:none;
+            display:flex;
+            justify-content:center;
+            flex-direction:column;
+            width:100%;
+
+            :before{
+                background-image: url(${cpb});
+                background-size: inherit;
+                background-position: 0 0px;
+                background-repeat: no-repeat;
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0.2;
+            }
+
+            .TrackButtons{
+                display:flex;
+                justify-content:center;
+                width:100%;
+                margin-top:30px;
+                .TButton{
+                    padding: 15px 35px;
+                    z-index:100;
+
+                    a{
+                        font-size:22px;
+
+                        span{
+                            img{
+                                height: 35px;
+                            }
+                        }
+                    }
+                }
+            }
+            .Header{
+                font-size: 1.2rem;
+
+                p{
+                    font-size:18px;
+                }
+                }
+            }
+    `}
 `;
 
 const Navigation = styled.div`
@@ -486,7 +637,7 @@ const Button = styled.button`
 
 
 const Information = styled.div`
-    padding: 50px 0px;
+    padding-top: 50px;
     background-color:white;
 
     .Header{

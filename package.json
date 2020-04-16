@@ -27,6 +27,7 @@
     "axios": "^0.19.2",
     "date-fns": "^2.11.0",
     "firebase": "^7.14.0",
+    "format-number": "^3.0.0",
     "geofirestore": "^3.4.1",
     "immer": "^6.0.3",
     "lodash": "^4.17.15",

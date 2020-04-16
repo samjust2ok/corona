@@ -83,7 +83,15 @@ function* createReport(action: CreateReportActionType){
 function* getLiveCases(){
   const res = yield axios.get('https://corona.lmao.ninja/countries/Nigeria');
   yield put(storeLiveCases({
-    data: res.data
+    data: res.data,
+    place: res.data.country.toLowerCase()
+  }))
+
+  const resp = yield axios.get('https://corona.lmao.ninja/all');
+ 
+  yield put(storeLiveCases({
+    data: resp.data,
+    place: 'world'
   }))
 }
 
