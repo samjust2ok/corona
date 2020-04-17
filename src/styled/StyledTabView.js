@@ -88,6 +88,14 @@ const TabBodyDef = styled.div`
             flex-wrap:wrap;
             justify-content:center;
         }
+
+        .ViewAll{
+            padding: 0 30px;
+
+            span{
+                margin-right:15px;
+            }
+        }
     }
 
     ${devices.tablet`
@@ -95,6 +103,15 @@ const TabBodyDef = styled.div`
         .Tab{
             justify-content: flex-start;
             
+        }
+
+    `}
+
+    ${devices.mobileXL`
+        .TabContent{
+            .ViewAll{
+                display:none;
+            }
         }
 
     `}

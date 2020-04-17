@@ -906,6 +906,9 @@ const StyledShare = styled.div`
             flex-direction:column;
             z-index: 120;
             
+            li{
+                list-style-type:none;
+            }
 
             .Dropdown-Item{
                 padding: 15px 20px;

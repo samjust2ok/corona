@@ -86,5 +86,35 @@ const Info = styled.div`
     }
 `;
 
+const StyledSurvivalInfo = styled.div`
+    /* width:100%; */
+    padding: 0 20px;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    
+        .ImageCard{
+            width:100%;
+            max-width: 300px;
+            border-radius:7px;
+            box-shadow: -8px 8px 26px 0 rgba(0,0,0,0.08);
+            margin: 30px 20px;
+            flex-shrink:0;
+            height: 300px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            width:400px;
+            border-radius:10px;
+            overflow: hidden;
+            
+            img{
+                width:100%;
+                border-radius:10px;
+                height:100%;
+                object-fit:contain;
+            }
+        }
+`;
 
-export {Info}
+export {Info, StyledSurvivalInfo}

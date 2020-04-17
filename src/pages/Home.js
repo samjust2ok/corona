@@ -3,11 +3,17 @@ import StyledHome, { Information, Navigation, HeaderContent, Button, NavigationC
 import MapSvg from '../components/MapSvg';
 import imap from '../images/imap.png';
 import gmap from '../images/gmap.png';
+import h1 from '../images/h1.jpg';
+import h2 from '../images/h2.jpg';
+import h3 from '../images/h3.jpg';
+import h4 from '../images/h4.jpg';
+import h5 from '../images/h5.jpg';
+import h6 from '../images/h6.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import theme from '../constants/theme';
 import { useTransition,animated } from 'react-spring';
 import TabView from '../components/TabView';
-import { TotalStatistics, World } from '../components/InfoCards';
+import { TotalStatistics, World, SurvivalInfo } from '../components/InfoCards';
 
 import {
     FacebookShareButton,
@@ -24,6 +30,8 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { getLiveCases } from '../actions/apiActions';
 
+const imagesArr = [h1,h2,h3,h4,h5,h6];
+
 const URL = 'report-covid.netlify.com';
 const SHARE_QUOTE = 'Report suspected cases of COVID-19 to help the NCDC combat the spread. | Help flatten the curve';
 const HASHTAG = '#ReportCovid';
@@ -31,13 +39,10 @@ const TITLE = 'REPORT COVID';
 
 const tabs = [
     {
-        title: 'Notification'
-    },
-    {
         title: 'Survival Tips'
     },
     {
-        title: 'Emergency'
+        title: 'Notification'
     }
 ]
 
@@ -339,14 +344,24 @@ const Home  = ()=>{
                     <p>Get the right information to keep yourself, family, and friends safe</p>
                 </div>
                     <TabView tabs = {tabs}>
+                            <div className="TabContent">
+                                <SurvivalInfo images = {imagesArr}/>
+                                {/* <div className="ViewAll">
+                                    <a href="/survival">
+                                        <span>
+                                            See All
+                                        </span>
+                                        <span>
+                                            <FontAwesomeIcon icon = "arrow-right"/>
+                                        </span>
+                                    </a>
+                                </div> */}
+                            </div>
                         <div className="TabContent">
                             <div className="Statistics">
                                 <TotalStatistics data = {casesSelector.nigeria}/>
                                 <World data = {casesSelector.world}/>
                             </div>
-                        </div>
-                        <div className="TabContent">
-                            
                         </div>
                         <div className="TabContent">
                         

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSprings, animated, interpolate } from 'react-spring'
 import { useGesture } from 'react-use-gesture'
-import {Info} from '../styled/StyledCardDeck';
+import {Info,StyledSurvivalInfo} from '../styled/StyledCardDeck';
 import nigeria from '../images/nigeria.jpg';
 import nigeria_2 from '../images/nigeria2.jpg'
 import corona from '../images/corona.jpg';
@@ -109,4 +109,20 @@ const World = ({data})=>{
     );
 }
 
-export {TotalStatistics,World};
+const SurvivalInfo = ({images})=>{
+    return (
+        <StyledSurvivalInfo>
+            {
+                images.map((img,index)=>{
+                    return (
+                        <div key = {index} className="ImageCard">
+                            <img src={img} alt=""/>
+                        </div>
+                    );
+                })
+            }
+        </StyledSurvivalInfo>
+    );
+}
+
+export {TotalStatistics,World,SurvivalInfo};
